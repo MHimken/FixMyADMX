@@ -31,6 +31,12 @@ Default: $WorkingDirectory\Logs\
 PS> .\FixMyADMX.ps1 -ADMXFileLocation 'C:\users\MHimken\Downloads\CitrixADMX\receiver.admx' -ADMLFileLocation 'C:\users\MHimken\Downloads\CitrixADMX\receiver.adml'
 Will attempt to apply all fixes within this script. This is is the minimum amount of parameters required 
 
+.NOTES
+    Version: 1.0
+    Versionname: Aversion for Citrix
+    Intial creation date: 06.08.2023
+    Last change date: 06.08.2023
+    Latest changes: https://github.com/MHimken/FixMyADMX/blob/master/changelog.md
 #>
 param(
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
