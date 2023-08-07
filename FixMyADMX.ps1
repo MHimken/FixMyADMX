@@ -39,16 +39,14 @@ Will attempt to apply all fixes within this script. This is is the minimum amoun
     Latest changes: https://github.com/MHimken/FixMyADMX/blob/master/changelog.md
 #>
 param(
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
     [System.IO.FileInfo]$ADMXFileLocation,
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
     [System.IO.FileInfo]$ADMLFileLocation,
     [System.IO.DirectoryInfo]$WorkingDirectory = 'C:\FixMyADMX\',
     [System.IO.DirectoryInfo]$LogDirectory = "$WorkingDirectory\Logs\"
 )
 #Prepare folders and files
-$script:ADMLFileLocation = $ADMLFileLocation
-$script:ADMXFileLocation = $ADMXFileLocation
 $Script:TimeStampStart = Get-Date
 $Script:DateTime = Get-Date -Format ddMMyyyy_hhmmss
 if (-not(Test-Path $LogDirectory)) { New-Item $LogDirectory -ItemType Directory -Force | Out-Null }
@@ -58,15 +56,13 @@ $LogFile = Join-Path -Path $LogDirectory -ChildPath ('{0}_{1}.log' -f $LogPrefix
 $Script:PathToScript = if ( $PSScriptRoot ) { 
     # Console or VS Code debug/run button/F5 temp console
     $PSScriptRoot 
-}
-else {
+} else {
     if ( $psISE ) { Split-Path -Path $psISE.CurrentFile.FullPath }
     else {
         if ($profile -match 'VScode') { 
             # VS Code "Run Code Selection" button/F8 in integrated console
             Split-Path $psEditor.GetEditorContext().CurrentFile.Path 
-        }
-        else { 
+        } else { 
             Write-Output 'unknown directory to set path variable. exiting script.'
             exit
         } 
@@ -118,30 +114,27 @@ function Backup-PolicyFiles {
     Copy-Item -Path $script:ADMLFileLocation -Destination $BackupADMLPath -Force | Out-Null
     Write-Log -Message "Backup of $script:ADMXFileLocation and $script:ADMLFileLocation finished" -Component 'FMABackup'
 }
-function Add-explainTextStringToADML {
-    {
-        [string]$explainTextID
-    }    
-    Write-Log -Message "Adding string '$explainTextID' ... loading file" -Component 'FMAAddstringToADML'  
-    [xml]$ADMLToChange = Get-Content -Path $script:SaveADMLToWorkingDirectoryPath
-    #Verify that the element with that type does not exist already
-    if ($explainTextID -in $ADMLToChange.Node.string.id) {
+function Add-explainText {
+    param(
+        [string]$explainTextIdentifier
+    )
+    Write-Log -Message "Adding $explainTextIdentifier" -Component 'FMAAddstringToADML'
+    [xml]$ADMLtoEdit = Get-Content -Path $script:SaveADMLToWorkingDirectoryPath
+    if ($explainTextIdentifier -in $ADMLtoEdit.DocumentElement.resources.stringTable.string.id) {
         return $false
     }
-    $stringReplacementElement = $ADMLToChange.CreateElement('string')
-    $stringReplacementElement.SetAttribute('id', $ElementToAdd)
-    $stringReplacementElement.InnerText = "This should explain $ElementToAdd but it was missing from the ADMX and ADML. Find $ElementToAdd in the matching ADML to replace it with a real explanation."
-    $parentNodestringTable = $ADMLToChange.DocumentElement.resources.stringTable
+    $explainTextStringElement = $ADMLtoEdit.CreateElement('string')
+    $explainTextStringElement.SetAttribute('id', $explainTextIdentifier)
+    $explainTextStringElement.InnerText = "This should explain '$($explainTextIdentifier.Substring(0,$explainTextIdentifier.Length - 8))', but it was missing from the ADMX and ADML. Find this element by using '$explainTextIdentifier' in the ADML and replace it as needed"
+    $parentNodestringTable = $ADMLtoEdit.DocumentElement.resources.stringTable
     try {
-        $parentNodestringTable.AppendChild($stringReplacementElement)
-    }
-    catch {
+        $parentNodestringTable.AppendChild($explainTextStringElement)
+    } catch {
         Write-Log -Message "$($Error[0].Exception.ErrorRecord)" -Component 'FMAAddstringToADML' -Type 3
-        Write-Log -Message "Failed to append the childitem '$explainTextID' in $script:SaveADMLToWorkingDirectoryPath" -Component 'FMAAddstringToADML' -Type 3 
-        return $false          
+        Write-Log -Message "Failed to append the childitem $explainTextIdentifier in $script:SaveADMLToWorkingDirectoryPath" -Component 'FMAAddstringToADML' -Type 3
+        return $false
     }
-    #if (Test-Path $SaveADMLToWorkingDirectoryPath) { Remove-Item $SaveADMLToWorkingDirectoryPath -Force }
-    $ADMLToChange.Save($script:SaveADMLToWorkingDirectoryPath)
+    $ADMLtoEdit.Save($script:SaveADMLToWorkingDirectoryPath)
     return $true
 }
 function Add-textBoxToADML {
@@ -165,8 +158,7 @@ function Add-textBoxToADML {
         try {
             $parentNodepresentationTable.InsertAfter($textBoxElement, $ElementToReplace)
             $parentNodepresentationTable.RemoveChild($ElementToReplace)
-        }
-        catch {
+        } catch {
             Write-Log -Message "$($Error[0].Exception.ErrorRecord)" -Component 'FMAAddtextBoxToADML' -Type 3
             Write-Log -Message "Failed to replace $($elementToReplace.refId) with $($textBoxElement.refId)" -Component 'FMAAddtextBoxToADML' -Type 3
             return $false
@@ -187,8 +179,7 @@ function Add-explainTextAttributeToADMX {
     $parentPolicy = $ADMXToChange.policyDefinitions.policies.ChildNodes | Where-Object { $_.name -eq $policy.name }
     try {
         $parentPolicy.SetAttribute("explainText", $explainText)
-    }
-    catch {
+    } catch {
         Write-Log -Message "$($Error[0].Exception.ErrorRecord)" -Component 'FMAAddexplainTextAttributeToADMX' -Type 3
         Write-Log -Message "Failed to set the attribute '$explainText' to " -Component 'FMAAddexplainTextAttributeToADMX' -Type 3
         return $false             
@@ -205,10 +196,10 @@ function Repair-ADMXexplainText {
     foreach ($policy in $explainTextMissing) {
         #Add explainText with an '_Explain' ending for the stringvariable - this is this closest to most original Microsoft ADMX/ADML files
         $explainTextRef = $policy.name + "_Explain"
-        Write-Log -Message "Attempting to add string '$explainTextRef' to ADML" -Component 'FMAADMXRepairexplainText'
-        if (-not(Add-explainTextStringToADML -explainTextID $explainTextRef)) {
+        Write-Log -Message "Attempting to add string $explainTextRef to ADML" -Component 'FMAADMXRepairexplainText'
+        if (-not(Add-explainText -explainTextIdentifier $explainTextRef)) {
             Write-Log "'$explainTextRef' is already a string adding counter" -Component 'FMAADMXRepairexplainText'
-            $AddStringToADMLResult = Add-explainTextStringToADML -explainTextID $explainTextRef+$counter
+            $AddStringToADMLResult = Add-explainText -explainTextID $explainTextRef+$counter
             $counter++
             if (-not($AddStringToADMLResult)) {
                 return $false
@@ -243,19 +234,17 @@ function Repair-ADMXWindowsReferences {
     $UsingWindowsADMX = ('Microsoft.Policies.Windows' -in $ADMXToChange.policyDefinitions.policyNamespaces.using.namespace)
     if ($UsingWindowsADMX) {
         Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath has the windows.admx added to its namespace" -Component 'FMAADMXRepairWindowsReferences'
-        [string]$RawADMX = Get-Content $script:SaveADMXToWorkingDirectoryPath | Select-String -Pattern 'Windows:' -Raw
-        if($RawADMX){
+        [string]$RawADMX = Get-Content $script:SaveADMXToWorkingDirectoryPath | Select-String -Pattern 'Windows:'
+        if ($RawADMX) {
             Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is actively using a 'Windows:' reference" -Component 'FMAADMXRepairWindowsReferences' -Type 2
             return $false
-        }
-        else{
+        } else {
             Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is not actively using a 'Windows:' reference - removing namespace" -Component 'FMAADMXRepairWindowsReferences'
-            $WindowsReference = $ADMXToChange.policyDefinitions.policyNamespaces.using | Where-Object{$_.namespace -eq 'Microsoft.Policies.Windows'}
+            $WindowsReference = $ADMXToChange.policyDefinitions.policyNamespaces.using | Where-Object { $_.namespace -eq 'Microsoft.Policies.Windows' }
             $ADMXToChange.policyDefinitions.policyNamespaces.RemoveChild($WindowsReference)
             $ADMXToChange.Save($script:SaveADMXToWorkingDirectoryPath)
         }
-    }
-    else{
+    } else {
         Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is not using windows.admx" -Component 'FMAADMXRepairWindowsReferences'
     }
     return $true
@@ -282,17 +271,7 @@ function Clear-TempFiles {
     #NothingToDoYet
 }
 #Start Coding!
-#START: REMOVE THIS PART AFTER TESTING!
-$ADMXFileLocation = 'C:\temp\ADMX TEST\receiver.admx'
-$ADMLFileLocation = 'C:\temp\ADMX TEST\receiver.adml'
-$script:ADMLFileLocation = $ADMLFileLocation
-$script:ADMXFileLocation = $ADMXFileLocation
-
 Backup-PolicyFiles
-#START: REMOVE THIS PART AFTER TESTING! Dont forget to replace the ADMLFileLocations with the workingdirectorypath one...
-$script:ADMLFileLocation = $script:SaveADMLToWorkingDirectoryPath
-$script:ADMXFileLocation = $script:SaveADMXToWorkingDirectoryPath
-#END: REMOVE THIS PART AFTER TESTING!
 Repair-Files
 Clear-TempFiles
 Set-Location $CurrentLocation
