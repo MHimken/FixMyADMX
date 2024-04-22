@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" revision="1.0" schemaVersion="1.0" xmlns="http://www.microsoft.com/GroupPolicy/PolicyDefinitions">
+  <displayName>DisplayName</displayName>
+  <description>Description</description>
+  <resources>
+    <stringTable>
+      <string id="03E445D7B5956335BEDEF9340AC7E092">Commercial Vantage</string>
+      <string id="261C3D29FFEB46D46D29941DC7D22786">EULA</string>
+      <string id="0B297BC05A42F20C522B7E7C49F3DA4C">Accept EULA Automatically</string>
+      <string id="4E37FF4B9B1BE7FB138A9FBD55E9364E">When you use this policy to disable the end user EULA and Privacy window, a notification will go back to Lenovo that the EULA has been accepted.  No other data is collected</string>
+      <string id="73B91784D50BFD64ED39D61C739EC237">Windows 10</string>
+      <string id="8BEB3CE1E181B089EC89D4C4E6A3D448">Toast Message</string>
+      <string id="F6C85801C43C891802501E0874EC5250"> Turn Off toast messages</string>
+      <string id="2E7D3FFB97453F234DEE49F720A033FF">When this policy is enabled, toast messages will not be displayed to end-users.</string>
+      <string id="8EB4B7362B69050BFD52D7A0636C0562">Dashboard</string>
+      <string id="1F6F8E76D41D67F5D1845AAF8C9BDB12">Turn off Dashboard</string>
+      <string id="83DC0F09B32117AFA51ED2C98F4931A3">When this policy is enabled, Dashboard feature of Commercial Vantage will be turned off</string>
+      <string id="2AD92E0D6F8EE99CDE71A2B3EB963BE9">GiveFeedback</string>
+      <string id="EFA681A743E372A609817025E6DB54F4">Turn off Give Feedback</string>
+      <string id="B5D80E4D84F79A87AFE8A31EC74EEF96">When this policy is enabled, the Give Feedback feature of Commercial Vantage will be turned off</string>
+      <string id="7D8BB8A33C8A8577FC2188C5539DFDBB">Device</string>
+      <string id="7DC6B375A04DED51E2E2284B674C89B2">Turn off My Device</string>
+      <string id="7946A3238AADD90DB103C9BDE8B78833">When this policy is enabled, My Device feature of Commercial Vantage will be turned off</string>
+      <string id="8BEA952099C4C4C6D02DD70CD3810FC8">Turn off Device Settings</string>
+      <string id="CCC8E18DEE81DF0C2B45781FF7679C1D">When this policy is enabled, Device Settings feature of Commercial Vantage will be turned off</string>
+      <string id="B1B36F62F870EFEC07D9FC0F8D0390B2">Turn off System Update</string>
+      <string id="2C270A501C66C845F4B4A325D5125373">When this policy is enabled, System Update feature of Commercial Vantage will be turned off</string>
+      <string id="186FBE576D28BCB6D08F2A9065E9416A">My Software</string>
+      <string id="B042DBC01B4E2E0DC84244B2C0240693">Turn off My Software</string>
+      <string id="209B32FAC25EDA208996477EDD652961">When this policy is enabled, My Software page will be hidden.</string>
+      <string id="4D633640E5CF3443867C0771CE6106B0">Warranty</string>
+      <string id="D57B067B08FE5C0D0791EDA4D5F7D552">Hide warranty information</string>
+      <string id="9F9C7F0977675E29EA20070CAB21ABEE">This policy setting allows the Administrator to hide the warranty information in Commercial Vantage.
+
+If you enable it, the warranty information will be removed from the Commercial Vantage.
+
+If you disable or not config it, the warranty information will be shown.</string>
+      <string id="2492D59A8DA5CE04117CB7BB1381F888">Write warranty information to WMI table</string>
+      <string id="BE0A32529A0440F7D5F560CC726CB9BD">This policy setting allows the Administrator to enable Commercial Vantage to writing the warranty information for the system into the Lenovo Namespace WMI table. If you enable it, the warranty information will be written into WMI table. If you disable or not config it, the warranty information will not be written into WMI table.</string>
+      <string id="8BFC79DE8BB6F9B73316906802BA1CF8">Device Settings</string>
+      <string id="7E545BC0614659EAE91DA1E4090FAF9B">Turn off Smart Assist</string>
+      <string id="AC9B0122EC1A9FBC340AE4EB15E8FA6A">When this policy is enabled, Smart Assist feature of Commercial Vantage will be turned off.</string>
+      <string id="385B0718B3A5821F493B8F1F0424A68D">Microphone</string>
+      <string id="95B863C7A675FCD8D26113FEEF9390F1">Turn off Microphone Settings</string>
+      <string id="BDA4A033173928D2715DC5BBD249F984">When this policy is enabled, the Microphone Settings features of Commercial Vantage will be turned off</string>
+      <string id="E4F5170489B8C677D42DEB4590E140A7">Power</string>
+      <string id="E0DE3C7CF87888866A8F22728790A7F7">Turn off Standby Settings</string>
+      <string id="00E5B7AFF9D7682352B4F3AF29247EF2">When this policy is enabled, the Standby Settings features of Commercial Vantage will be turned off</string>
+      <string id="328B4079E9D551164EC49224671A3FA1">Turn off Battery Settings</string>
+      <string id="0A771032FBA5AFE23C12C0F37A99F611">When this policy is enabled, the Battery Settings features of Commercial Vantage will be turned off.
+
+Battery percentage for starting and stopping charge threshold can only be set in increments of 5. Any value input will be rolled to next increment of 5.
+
+If IT Admin sets a "Start Charging"  greater than "Stop Charging", Vantage will ignore "Start Charging" set by Admin and will "Start Charging" at 5% less than "Stop Charging"
+Ex: IT Admin sets "Start Charging" = 60 and "Stop Charging" = 50. Then, Vantage will "Start Charging" at 45 “ Since "Stop Charging" = 50
+
+If checkbox to "Automatically set the start charging" is checked by IT Admin, Vantage will ignore "Start Charging" set by Admin and will "Start Charging" at "Stop Charging" minus 5.
+Ex: If checkbox selected and "Stop Charging" is set to 90, then "Start Charging" is set to 85.
+
+When the toggle to "automatically set threshold" is on then Battery Threshold "Start" can not be set.</string>
+      <string id="1286FE4E8827047D64DEDA5B7D2F1E77">Turn off Energy Star</string>
+      <string id="F425A36AA9AE4B8498348A9B5DCA6C87">When this policy is enabled, the Energy Star features of Commercial Vantage will be turned off</string>
+      <string id="34614CC8F51620B40F9D62FCCECB9D10">Turn off Power Settings</string>
+      <string id="D4965103224D8D7D2353EC9D75E59061">When this policy is enabled, the Power Settings of Commercial Vantage will be turned off</string>
+      <string id="6705E49344F4667086A7CC519EE2BE8B">Turn off Power Smart Settings</string>
+      <string id="86D80A02F33F5EE47BD631C87652051C">When this policy is Enabled,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be hidden.
+When this policy is Disabled,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.
+When this policy is Not Configured,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.</string>
+      <string id="77E76F7B2AEA0F004DE0F8323929C5FA">Turn off DPM Power Settings</string>
+      <string id="4611E3287E6ED02AAC05728E15AC7018">When this policy is enabled, the DPM Power Settings of Commercial Vantage will be turned off</string>
+      <string id="A784DA18A4178CCC12A14FF48D2FE97F">Write battery information to WMI table</string>
+      <string id="0AD4704A2ECA1F058115545F457D1BD3">This policy setting allows Commercial Vantage to write the computer battery information into the Lenovo Namespace WMI table. If you enable it, the battery information will be written into the WMI table.
+
+This policy setting allows Administrator to configure the schedule type, schedule day, and schedule time for writing the computer battery information into the Lenovo Namespace WMI table.
+The Schedule type value should be a number (0-2), where 0 means daily, 1 means weekly, 2 means monthly.
+If the Schedule type value is set to 0, the Schedule day value should be set to 0 (and this value will be ignored). If the Schedule type is set to 1, the Schedule day value should be a number (0-6), where 0 means Sunday, 1 means Monday, 2 means Tuesday... If the Schedule type is set to 2, the Schedule day value should be a number (-1 or 1-31), where -1 means the last day of the month, 1 means the first day of the month, 2 means the second day of the month...
+The Schedule time value format should be HH:mm:ss. For example, 18:30:00 represents 6:30PM.
+
+If you disable or do not configure this policy setting, the battery information will not be written into the WMI table.</string>
+      <string id="2F1A3379F15869B17CDC4166675CF9F4">Display and Camera</string>
+      <string id="B328B390BADF649AA20446A65D6FC4D6">Turn off Display</string>
+      <string id="A7F8B3ECD71F31FFD559EA4E581039EE">When this policy is enabled, the Display features of Commercial Vantage will be turned off</string>
+      <string id="719EFE005415B7827DCD2A3CCA419D51">Turn off Camera</string>
+      <string id="6F49E5E4B35BEAF279C570C14F59A04C">When this policy is enabled, the Camera features of Commercial Vantage will be turned off</string>
+      <string id="DC6ABC1D9A065D6934DBBF4A781C1743">Input and Accessories</string>
+      <string id="228C5CE4A7B2A00F8225F4634E8A4348">Turn off Intelligent Keyboard</string>
+      <string id="080592E87DC05315AAA1CCC9C9B6A4E9">When this policy is enabled, the Intelligent Keyboard features of Commercial Vantage will be turned off</string>
+      <string id="45D8B8B2CBDB4610CAB05A18CF2C9868">Smart Assist</string>
+      <string id="18A5C8F9A3E7EF1E61136B3C4432D0CD">Turn off Intelligent Screen</string>
+      <string id="859CABE73C50AEA8527961FECC498BC7">When this policy is enabled, the Intelligent Screen features of Commercial Vantage will be turned off</string>
+      <string id="C97FD3C55EAE4DC88837F5E314044ED6">Turn off Active Protection System Settings</string>
+      <string id="A11F8C878A993D77E77504CD58D19C8E">When this policy is enabled, the Active Protection System Settings features of Commercial Vantage will be turned off</string>
+      <string id="289CD58C3A8E5CDFB46E2084EB81BDCD">Turn off Intelligent Security Settings</string>
+      <string id="05F97F4A40D4F10727F179069A9799C7">When this policy is enabled, the  Intelligent Security Settings features of Commercial Vantage will be turned off.</string>
+      <string id="162A79B7E43E726881D582DBA5C8B0B7">System Update</string>
+      <string id="9C2A75593708F3D12E2334EBE2D8C712">System Update Repository</string>
+      <string id="833C377638391DCF96DBC57EA8A457F3">Defines the location of where System Update will pickup available content.</string>
+      <string id="1BA8F9AFA53BA0102A3C8422D7D21708">Configure System Update</string>
+      <string id="994E9BBFA8CCD84D2AFDF381589D54D8">This policy setting provides the ability for the Administrator to config the filter of searching updates.
+
+If you enable this policy setting, Commercial Vantage will searching for updates base on this filter.
+
+If you disable this policy setting, Commercial Vantage will searching for all available updates.
+
+Not config is the same as disabled.
+
+This policy affects both manual and auto update.</string>
+      <string id="E4FF6280DA9B32B3629E2DCFE74DCCDB">Auto Update</string>
+      <string id="4286E43EF428E913AB84DAF25C3FFDBB">Schedule the Month for Auto Update</string>
+      <string id="FF8EE1C92F629A2893004C4073E05F93">This policy setting provides the ability for the Administrator to configure the months in which Auto Update will occur.  You can mark the checkbox that corresponds to the desired month(s). If you click "All" plus other individual months, the individual months will take precedence over "All".  If you do not select any months, the policy will be ignored.  If this policy is enabled, the Run Once task will be disabled automatically.
+
+Note:  This policy will be combined with the configuration of Schedule the Day for Auto Update to determine the exact schedule of Auto Update.</string>
+      <string id="447FC7075875B00063C6DB3E8CAD9251">Schedule the Day for Auto Update</string>
+      <string id="EF9E29649027FF7E6A77403376054D43">This policy setting provides the ability for the Administrator to configure the day(s) on which the Auto Update will occur.  Either specify specific day(s) of the month or specify a frequency and day of the week.  If both "Day(s)" and "Frequency/Day of the Week" are specified,"Day(s)" will take precedence and "Frequency/Day of the Week" will be ignored.
+If "Day(s)" is configured, Auto Update will only occur on the specified days.  The desired days can be specified by the number of the day in the month or by specifying "Last Day" for the last day of the month or "All" for all days of the month.  Multiple days can be specified by separating with semi-colon ( ; ).  
+
+Example for Day(s) input:    
+	All  --&gt;  Auto Update will occur on all days of the month    
+	1;7;13;25  --&gt; will only occur on the days: 1, 7, 13, and 25    
+	All;1;13;25  --&gt; will only occur on the days:  1, 13, 25 and "All" is ignored    
+	LastDay  --&gt; will only occur on the last day of the month    
+	LastDay;1;13;25  --&gt; will only occur on the days: 1, 13, 25 and the last day of the month
+
+When Frequency and Days of the Week are configured, a selection must be set for both or else the policy will be ignored.  
+
+Example for Frequency/Days of the Week:   
+	-If "All" is checked under Frequency and "Friday" is checked under Day of the Week, then Auto Update will occur every Friday.   
+	-If "First" and "Third" are checked under Frequency and "Tuesday" is checked under Day of the Week, then Auto Update will occur on the first and third Tuesday of each month.
+
+Note:  This policy will be combined with the configuration of Schedule the Month for Auto Update to determine the exact schedule of Auto Update.</string>
+      <string id="2C1CB64D405EBE912A2B732AE1ECE7D8">Schedule the Time for Auto Update</string>
+      <string id="FC6A8E0957A8A62975014D9D50667A43">This policy setting provides the ability for the Administrator to config the time for auto update. Format HH:mm:ss For example 18:30:00 for 6:30PM. If this policy is enabled, the run once task will be disabled automatically</string>
+      <string id="D43962E5FBE943DF463DF81769C0244D">Auto Update</string>
+      <string id="7C9EDB8825D862BED11C009FA4883DB9">This policy setting provides the ability for the Administrator to control auto update.
+
+If you enable this policy setting, the auto update will be enabled.
+
+If you disable this policy setting, the auto update will be disabled.
+
+If you do not configure this policy setting, it will keep the last status and can be controlled by the end user.
+
+By default, auto update will install critical updates and recommended driver. If you want customization, please change the setting "Configure System Update"</string>
+      <string id="9A7530E7E2480881EEF05F04E36D61E7">Defer Update</string>
+      <string id="176A6299957C5944666B42C57DE8789F">This policy setting provides the ability for the Administrator to control how updates can be deferred.
+
+If you enable this policy, then you may configure the number of times the end-user is allowed to defer updates (DeferLimit) and the amount of time for each deferral (DeferTime). If these options are not configured, then the end-user may defer unlimited times for 60 minutes each deferral.
+
+If you disable this policy or the policy is not configured, then the end-user may only continue with the updates or cancel the updates. If cancelled, the updates will be presented again by the next scheduled scan for updates.</string>
+      <string id="17DCA71A5F79E93E7B97F1BB1C0C8EA7">Turn off Run-Once Task</string>
+      <string id="E7E53E2DBC470F09E15AF853E428AEDD">When this policy is enabled, the initial check for updates by Commercial Vantage is turned off.</string>
+      <string id="9ABE674E6BEDC69FA61D6BD94C8CB93E">Turn off Dock Auto Update</string>
+      <string id="A95E08A9DBDD0F50AB6F8990649C2DB7">Dock Auto Update is a separate feature from Auto Update for the system and does not follow the filtering or scheduling configuration of the System Update policies.
+
+This feature focuses only on updating the firmware of docks that are attached to the system.
+
+When this policy is Enabled, the Dock Auto Update feature is turned off. Also, if the policy is Not Configured or not present, the Dock Auto Update feature is turned off.
+
+If Dock Auto Update feature needs to be turned on, then set this policy to Disabled. This will cause Commercial Vantage to check for an available Dock firmware update for the specific Dock when it is attached to the system.</string>
+      <string id="247D6178BE8CC3C83409E26C3E1CE0D9">Wifi Security</string>
+      <string id="D8388FE08B0F03BE3FEB5670764862BC">Turn off Wifi Security</string>
+      <string id="6E73F2B71AD9C7722924A79E92909B21">When this policy is enabled, Wifi Security feature of Commercial Vantage will be turned off</string>
+      <string id="672B78317E5E489502DF875C1DDBFA5C">Hardware Scan</string>
+      <string id="447E4364372AC6BD0B73755BDC99CD3F">Turn off Hardware Scan</string>
+      <string id="4D8B2BC0726D38A5B67C4FA027B90F78">When this policy is enabled, Hardware Scan feature of Commercial Vantage will be turned off</string>
+      <string id="F397BA36AB8172032068DED867F1008D">Preference Settings</string>
+      <string id="05D7BD01003FF7B51B42669826BEA9BF">Lenovo Service Bridge</string>
+      <string id="2A25BAE569DDC9FB5B5D03001CB950C7">Lenovo Service Bridge integration Settings</string>
+      <string id="B1097623C4F6BAA1D57990ACF88AB136">This policy setting provides the ability for the Administrator to control Commercial Vantage integration with Lenovo Service Bridge (LSB). LSB integration will provide users better experience while visiting Lenovo support site.
+
+If you enable this policy setting, LSB integration will be enabled and end user will not be able to modify it.
+
+If you disable this policy setting, LSB integration will be disabled and end user will not be able to modify it.
+
+If you do not configure this policy setting,  end user will be able to control it from the UI.</string>
+      <string id="5B612A7358A9993F356F04972437A81C">Turn off Preference Settings</string>
+      <string id="7E25779DC41280E9D28E56E43228C763">This policy setting provides the ability for the Administrator to control show/hide action of the page.
+
+If you enable this policy, Commercial Vantage will hide Preference settings page, and settings on the page won't change.
+
+If you disable this policy, Commercial Vantage will show Preference settings page and user can change the settings on the page.
+
+Not config is default value of this policy and it works as same as disabled.</string>
+      <string id="5593D70C6C768EF5E4F873DC7545DD92">Dolby Access</string>
+      <string id="27F41286AC974B6D57CB95A3290675A5">Turn off Dolby Access</string>
+      <string id="9F9448CCC5559894446B5E016E153CC4">When this policy is enabled, Dolby Access page will be hidden. Then, the Advanced microphone effects section on Microphone page should be hidden as well.</string>
+    </stringTable>
+    <presentationTable>
+      <presentation id="6A6C1333A96BD99C316FC0AC169C6B8D">
+        <text>Battery Threshold.
+</text>
+        <checkBox refId="30B3EB897294AF0A770737E004CCE7B0">Enable custom battery threshold settings</checkBox>
+        <decimalTextBox refId="4B9DE8D61B215393ED7255D0719FA5FA" defaultValue="40" spinStep="5">Start</decimalTextBox>
+        <decimalTextBox refId="2FE339B04615BBA5C913F45FB6A1B34D" defaultValue="80" spinStep="5">Stop</decimalTextBox>
+        <checkBox refId="51A1765894644A2F58B9AF5EE7F65922">Automatically set the start charging</checkBox>
+      </presentation>
+      <presentation id="64F93BB9BFC0EB1C9ADD81981905E061">
+        <text>Schedule type
+</text>
+        <textBox refId="ADE41242A9F8CE596481FE945E5FE5D8">
+          <label />
+          <defaultValue>1</defaultValue>
+        </textBox>
+        <text>Schedule day
+</text>
+        <textBox refId="F04F922293A120999D4EB95012CA0C64">
+          <label />
+          <defaultValue>1</defaultValue>
+        </textBox>
+        <text>Schedule time
+</text>
+        <textBox refId="AC72B4BC066D807C760A11748C39F451">
+          <label />
+          <defaultValue>10:00:00</defaultValue>
+        </textBox>
+      </presentation>
+      <presentation id="BD0C70F0CE887CC46496DD7BF81C0B8C">
+        <textBox refId="BD0C70F0CE887CC46496DD7BF81C0B8C">
+          <label>Repository Path</label>
+          <defaultValue />
+        </textBox>
+      </presentation>
+      <presentation id="E1181AE4156C9E11CAF88FC6416AE108">
+        <text>Critical updates:
+</text>
+        <checkBox refId="602015B22CFEA08C53FEC8C3E81356BF">application</checkBox>
+        <checkBox refId="CE7D1526B3D8674705FF75DFF52B4416">driver</checkBox>
+        <checkBox refId="7C75C7AA6FF288235BCA3886FA9A4176">BIOS</checkBox>
+        <checkBox refId="94803C37291A574BB4CAF4DFAE682CC2">firmware</checkBox>
+        <checkBox refId="7326616EB323392D1BB0E6436A4A02AF">others</checkBox>
+        <text>Recommended update:
+</text>
+        <checkBox refId="6564E6607DD79991C0A56F009A4102FA">application</checkBox>
+        <checkBox refId="B78D824B47B0EC632B7EDEF30B63E2D9">driver</checkBox>
+        <checkBox refId="A0DEF98CD96C592582382A3453CB78BA">BIOS</checkBox>
+        <checkBox refId="8E6885D7C10107B5CD98053B7D8B2A6E">firmware</checkBox>
+        <checkBox refId="A45D902F95DDD3B8597B21175A66A804">others</checkBox>
+        <text>Optional update:
+</text>
+        <checkBox refId="46302403B9C32072305518FE20DC6720">application</checkBox>
+        <checkBox refId="FDC13AFD3BA418958D122D78105C2F90">driver</checkBox>
+        <checkBox refId="3297105136FCEC5D3432C0FA2FDB73BB">BIOS</checkBox>
+        <checkBox refId="C62002C924CF75712313AC1CF94525AB">firmware</checkBox>
+        <checkBox refId="9A82A62C3EF3BA2FCC142413A1FAC951">others</checkBox>
+      </presentation>
+      <presentation id="1BBDD1238563F503D50D0E79F54DA94A">
+        <text>Month(s)
+</text>
+        <checkBox refId="B2DD6109EA2E207C836383CECF4A9BEC" defaultChecked="true">All</checkBox>
+        <checkBox refId="ED5C30B56EF8F5365D9C42831CF04BD8">1</checkBox>
+        <checkBox refId="BF9C2D60C64BF8F3B5099FE91F9B5089">2</checkBox>
+        <checkBox refId="43C6E71EE827630A483FA7FD7ED57CCF">3</checkBox>
+        <checkBox refId="9438FDA7478EC6BFD7FAF9C71FE1152B">4</checkBox>
+        <checkBox refId="7D438E61733F014AD996B137C6250657">5</checkBox>
+        <checkBox refId="3205471F2D479A66D2E74BD31E8CACCE">6</checkBox>
+        <checkBox refId="2AA4C9F2C503F923457D404EA7EB6064">7</checkBox>
+        <checkBox refId="66676FED4BBAFA451F2300EF10644292">8</checkBox>
+        <checkBox refId="D7FFEA0FD35DA18D6BD5853D1D5D6207">9</checkBox>
+        <checkBox refId="328D5A4F3EF98FC4FCEE4776C1A2F716">10</checkBox>
+        <checkBox refId="5EB2B35C9240F82A600E5E6CC701FA89">11</checkBox>
+        <checkBox refId="DBEC478AFADA88DC29C9BBC5A4AD2A97">12</checkBox>
+      </presentation>
+      <presentation id="FF58478F9C192E8D002D1838C81A8B9A">
+        <textBox refId="9B56ECD989102ABD1C7FEAF701B20490">
+          <label>Day(s)</label>
+        </textBox>
+        <text>
+
+- - OR - -
+
+</text>
+        <text>Frequency
+</text>
+        <checkBox refId="8954B312E3ABB22A17F7E50723750B80" defaultChecked="true">All</checkBox>
+        <checkBox refId="001C72322736D14CFC56E1F4653019F6">First</checkBox>
+        <checkBox refId="806D1BC85455150F0DCD44BDFC9839FA">Second</checkBox>
+        <checkBox refId="0E8030803EB7BFD27581D3A2BEFE771E">Third</checkBox>
+        <checkBox refId="E68FFD0829E277997C8972276A02E92B">Fourth</checkBox>
+        <checkBox refId="AFA05A1BB42D873987FFD971D4B1B6A2">Last</checkBox>
+        <text>Day of the Week
+</text>
+        <checkBox refId="4BBE69DF32A6A22FDA4FF162C53C7154">Sunday</checkBox>
+        <checkBox refId="A48090544BD0587769808CA01B8D1670">Monday</checkBox>
+        <checkBox refId="159A93568F287E05F64F599B64034E2F">Tuesday</checkBox>
+        <checkBox refId="B2CF1DA1B0B639B6B14ED2CCC1E26B80">Wednesday</checkBox>
+        <checkBox refId="24E625869762ABC41BA468897B581394">Thursday</checkBox>
+        <checkBox refId="606C484482FDC09861E8DCFD5EFFBB2A">Friday</checkBox>
+        <checkBox refId="C6F63436FC3A9ECA03116BB2624763E3">Saturday</checkBox>
+      </presentation>
+      <presentation id="EC653B23E1449655915FA566BEA54E40">
+        <textBox refId="EC653B23E1449655915FA566BEA54E40">
+          <label>Schedule the Time for Auto Update</label>
+        </textBox>
+      </presentation>
+      <presentation id="C015CAB39D5B210745DC6D0F43029C21">
+        <textBox refId="311D60F57C54D2DD03394368BDFCED99">
+          <label>Defer Limit</label>
+        </textBox>
+        <textBox refId="95E579A1A0BABCEDAC4AF1BC81B042F4">
+          <label>Defer Time</label>
+          <defaultValue>60</defaultValue>
+        </textBox>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>
