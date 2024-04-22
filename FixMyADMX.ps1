@@ -259,12 +259,12 @@ function Repair-Files {
     }
     # If the explainText attribute is missing from the <policy> element it will give an "Object reference not set to an instance of an object." error
     if (-not(Repair-ADMXexplainText)) {
-        Write-Log -Message 'Failed to replace the ComboBoxes used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
+        Write-Log -Message 'Failed to replace the ADMXExplainText used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
         return $false
     }
     # The Windows.admx is often referenced, because in Microsofts examples its an imported namespace - it might be completely unnecessary...
     if (-not(Repair-ADMXWindowsReferences)) {
-        Write-Log -Message 'Failed to replace the ComboBoxes used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
+        Write-Log -Message 'Failed to replace the Windows: references used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
         return $false
     }
 }
