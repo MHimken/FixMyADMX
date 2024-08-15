@@ -44,6 +44,9 @@
 		<category name="AdvancePreferencesOptions" displayName="$(string.AdvancePreferencesOptions)" explainText="$(string.Explain_AdvancePreferencesOptions)">
 			<parentCategory ref="SelfService"/>
 		</category>
+		<category name="TroubleShootingOptions" displayName="$(string.TroubleshootingOptions)" explainText="$(string.Explain_TroubleshootingOptions)">
+			<parentCategory ref="SelfService"/>
+		</category>
 		<category name="Authentication" displayName="$(string.Authentication)" explainText="$(string.Explain_Authentication)">
 			<parentCategory ref="ICAClient"/>
 		</category>
@@ -543,7 +546,7 @@
 				<string>false</string>
 			</disabledValue>
 		</policy>
-		<policy name="Policy_EnableRCG" class="Machine" displayName="$(string.Policy_EnableRCG)" explainText="$(string.Explain_EnableRCG)" presentation="$(presentation.Policy_EnableRCG)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials" valueName="EnableRCG">
+		<policy name="Policy_EnableRCG" class="Machine" displayName="$(string.Policy_EnableRCG)" explainText="$(string.Explain_EnableRCG)" presentation="$(presentation.Policy_EnableRCG)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials" valueName="EnableEnhancedDomainPassthrough">
 			<parentCategory ref="Authentication"/>
 			<supportedOn ref="SUPPORTED_Platform"/>
 			<enabledValue>
@@ -2302,6 +2305,115 @@
 						</value>
 					</item>
 				</enum>
+				<enum id="Part_Keyboard_Hotkey_Toggle_RelativeMouse" valueName="HotKey15Shift">
+					<item displayName="$(string.unknown_688)">
+						<value>
+							<string>(none)</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_690)">
+						<value>
+							<string>Alt</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_692)">
+						<value>
+							<string>Ctrl</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_694)">
+						<value>
+							<string>Shift</string>
+						</value>
+					</item>
+				</enum>
+				<enum id="Part_Keyboard_Hotkey_Toggle_RelativeMouse_Plus" valueName="HotKey15Char">
+					<item displayName="$(string.unknown_696)">
+						<value>
+							<string>(none)</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_698)">
+						<value>
+							<string>F1</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_700)">
+						<value>
+							<string>F10</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_702)">
+						<value>
+							<string>F11</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_704)">
+						<value>
+							<string>F12</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_706)">
+						<value>
+							<string>F2</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_708)">
+						<value>
+							<string>F3</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_710)">
+						<value>
+							<string>F4</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_712)">
+						<value>
+							<string>F5</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_714)">
+						<value>
+							<string>F6</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_716)">
+						<value>
+							<string>F7</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_718)">
+						<value>
+							<string>F8</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_720)">
+						<value>
+							<string>F9</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_722)">
+						<value>
+							<string>minus</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_724)">
+						<value>
+							<string>plus</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_726)">
+						<value>
+							<string>star</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_728)">
+						<value>
+							<string>tab</string>
+						</value>
+					</item>
+				</enum>
 				<enum id="Part_Keyboard_Windows_Key" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Keyboard" valueName="TransparentKeyPassthrough">
 					<item displayName="$(string.unknown_158)">
 						<value>
@@ -2422,6 +2534,28 @@
 				</boolean>
 			</elements>
 		</policy>
+		<policy name="Policy_SleepInhibit" class="Machine" displayName="$(string.Policy_Sleep)" explainText="$(string.Explain_Sleep)" presentation="$(presentation.Policy_Sleep)" key="Software\Policies\Citrix\ICA Client\Engine\Sleep">
+			<parentCategory ref="UserExperience"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<elements>
+				<boolean id="Part_Sleep_InhibitSystemSleep" valueName="AllowSystemSleep">
+					<trueValue>
+						<decimal value="0"/>
+					</trueValue>
+					<falseValue>
+						<decimal value="1"/>
+					</falseValue>
+				</boolean>
+				<boolean id="Part_Sleep_InhibitDisplaySleep" valueName="AllowDisplaySleep">
+					<trueValue>
+						<decimal value="0"/>
+					</trueValue>
+					<falseValue>
+						<decimal value="1"/>
+					</falseValue>
+				</boolean>
+			</elements>
+		</policy>
 		<policy name="Policy_HostRenderedAudio" class="Machine" displayName="$(string.Policy_HostRenderedAudio)" explainText="$(string.Explain_HostRenderedAudio)" presentation="$(presentation.Policy_HostRenderedAudio)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio" valueName="HostRenderedAudio">
 			<parentCategory ref="UserExperience"/>
 			<supportedOn ref="SUPPORTED_Platform"/>
@@ -2517,6 +2651,16 @@
 					</falseValue>
 				</boolean>
 			</elements>
+		</policy>
+		<policy name="Policy_Net6DesktopViewer_Machine" class="Machine" displayName="$(string.Policy_Net6DesktopViewer)" explainText="$(string.Explain_Net6DesktopViewer)" presentation="$(presentation.Policy_Net6DesktopViewer)" key="Software\Policies\Citrix\ICA Client\DesktopViewer" valueName="Net6DesktopViewerEnabled">
+			<parentCategory ref="ClientEngine"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<enabledValue>
+				<string>True</string>
+			</enabledValue>
+			<disabledValue>
+				<string>False</string>
+			</disabledValue>
 		</policy>
 		<policy name="Policy_MSISettings" class="Machine" displayName="$(string.Policy_MSISettings)" explainText="$(string.Explain_MSISettings)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Multi-Stream" valueName="MSIEnabled">
 			<parentCategory ref="MultiStreamICA"/>
@@ -2635,6 +2779,26 @@
 				<decimal value="0"/>
 			</disabledValue>
 		</policy>
+		<policy name="Policy_EnableCwaToCsaSso_Machine" class="Machine" displayName="$(string.Policy_EnableCwaToCsaSso)" explainText="$(string.Explain_EnableCwaToCsaSso)" presentation="$(presentation.Policy_EnableCwaToCsaSso)" key="SOFTWARE\Policies\Citrix" valueName="EnableCwaToCsaSso">
+			<parentCategory ref="Authentication"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<enabledValue>
+				<decimal value="1"/>
+			</enabledValue>
+			<disabledValue>
+				<decimal value="0"/>
+			</disabledValue>
+		</policy>
+		<policy name="Policy_EnableCwaToCsaSso_User" class="User" displayName="$(string.Policy_EnableCwaToCsaSso)" explainText="$(string.Explain_EnableCwaToCsaSso)" presentation="$(presentation.Policy_EnableCwaToCsaSso)" key="SOFTWARE\Policies\Citrix" valueName="EnableCwaToCsaSso">
+			<parentCategory ref="Authentication"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<enabledValue>
+				<decimal value="1"/>
+			</enabledValue>
+			<disabledValue>
+				<decimal value="0"/>
+			</disabledValue>
+		</policy>
 		<policy name="Policy_BlockDirectICAFileLaunches" class="Machine" displayName="$(string.Policy_BlockDirectICAFileLaunches)" explainText="$(string.Explain_BlockDirectICAFileLaunches)" presentation="$(presentation.Policy_BlockDirectICAFileLaunches)" key="SOFTWARE\Policies\Citrix" valueName="BlockDirectICAFileLaunches">
 			<parentCategory ref="ClientEngine"/>
 			<supportedOn ref="SUPPORTED_Platform"/>
@@ -2737,6 +2901,26 @@
 		</policy>
 		<policy name="Policy_HideAdvancedPreferences" class="Machine" displayName="$(string.Policy_HideAdvancedPreferences)" explainText="$(string.Explain_HideAdvancedPreferences)" presentation="$(presentation.Policy_HideAdvancePreferencesOptions)" key="Software\Policies\Citrix" valueName="HideAdvancedPreferences">
 			<parentCategory ref="AdvancePreferencesOptions"/>
+			<supportedOn ref="SUPPORTED_NotSpecified"/>
+			<enabledValue>
+				<decimal value="1"/>
+			</enabledValue>
+			<disabledValue>
+				<decimal value="0"/>
+			</disabledValue>
+		</policy>
+		<policy name="Policy_HideTroubleshooting" class="Machine" displayName="$(string.Policy_HideTroubleshooting)" explainText="$(string.Explain_HideTroubleshooting)" presentation="$(presentation.Policy_HideTroubleshootingOptions)" key="Software\Policies\Citrix" valueName="HideTroubleshooting">
+			<parentCategory ref="TroubleShootingOptions"/>
+			<supportedOn ref="SUPPORTED_NotSpecified"/>
+			<enabledValue>
+				<decimal value="1"/>
+			</enabledValue>
+			<disabledValue>
+				<decimal value="0"/>
+			</disabledValue>
+		</policy>
+		<policy name="Policy_HideSendFeedback" class="Machine" displayName="$(string.Policy_HideSendFeedback)" explainText="$(string.Explain_HideSendFeedback)" presentation="$(presentation.Policy_HideTroubleshootingOptions)" key="Software\Policies\Citrix" valueName="HideSendFeedback">
+			<parentCategory ref="TroubleShootingOptions"/>
 			<supportedOn ref="SUPPORTED_NotSpecified"/>
 			<enabledValue>
 				<decimal value="1"/>
@@ -5436,6 +5620,115 @@
 						</value>
 					</item>
 				</enum>
+				<enum id="Part_Keyboard_Hotkey_Toggle_RelativeMouse" valueName="HotKey15Shift">
+					<item displayName="$(string.unknown_1217)">
+						<value>
+							<string>(none)</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1219)">
+						<value>
+							<string>Shift</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1221)">
+						<value>
+							<string>Ctrl</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1223)">
+						<value>
+							<string>Alt</string>
+						</value>
+					</item>
+				</enum>
+				<enum id="Part_Keyboard_Hotkey_Toggle_RelativeMouse_Plus" valueName="HotKey15Char">
+					<item displayName="$(string.unknown_1225)">
+						<value>
+							<string>(none)</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1227)">
+						<value>
+							<string>tab</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1229)">
+						<value>
+							<string>star</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1231)">
+						<value>
+							<string>plus</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1233)">
+						<value>
+							<string>minus</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1235)">
+						<value>
+							<string>F1</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1237)">
+						<value>
+							<string>F2</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1239)">
+						<value>
+							<string>F3</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1241)">
+						<value>
+							<string>F4</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1243)">
+						<value>
+							<string>F5</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1245)">
+						<value>
+							<string>F6</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1247)">
+						<value>
+							<string>F7</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1249)">
+						<value>
+							<string>F8</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1251)">
+						<value>
+							<string>F9</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1253)">
+						<value>
+							<string>F10</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1255)">
+						<value>
+							<string>F11</string>
+						</value>
+					</item>
+					<item displayName="$(string.unknown_1257)">
+						<value>
+							<string>F12</string>
+						</value>
+					</item>
+				</enum>
 				<enum id="Part_Keyboard_Windows_Key" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Keyboard" valueName="TransparentKeyPassthrough">
 					<item displayName="$(string.unknown_761)">
 						<value>
@@ -5619,6 +5912,28 @@
 				</boolean>
 			</elements>
 		</policy>
+		<policy name="Policy_SleepInhibit_1" class="User" displayName="$(string.Policy_Sleep)" explainText="$(string.Explain_Sleep)" presentation="$(presentation.Policy_Sleep)" key="Software\Policies\Citrix\ICA Client\Engine\Sleep">
+			<parentCategory ref="UserExperience"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<elements>
+				<boolean id="Part_Sleep_InhibitSystemSleep" valueName="AllowSystemSleep">
+					<trueValue>
+						<decimal value="0"/>
+					</trueValue>
+					<falseValue>
+						<decimal value="1"/>
+					</falseValue>
+				</boolean>
+				<boolean id="Part_Sleep_InhibitDisplaySleep" valueName="AllowDisplaySleep">
+					<trueValue>
+						<decimal value="0"/>
+					</trueValue>
+					<falseValue>
+						<decimal value="1"/>
+					</falseValue>
+				</boolean>
+			</elements>
+		</policy>
 		<policy name="Policy_HostRenderedAudio_1" class="User" displayName="$(string.Policy_HostRenderedAudio)" explainText="$(string.Explain_HostRenderedAudio)" presentation="$(presentation.Policy_HostRenderedAudio_1)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Virtual Channels\Audio" valueName="HostRenderedAudio">
 			<parentCategory ref="UserExperience"/>
 			<supportedOn ref="SUPPORTED_Platform"/>
@@ -5656,6 +5971,16 @@
 					</falseValue>
 				</boolean>
 			</elements>
+		</policy>
+		<policy name="Policy_Net6DesktopViewer_User" class="User" displayName="$(string.Policy_Net6DesktopViewer)" explainText="$(string.Explain_Net6DesktopViewer)" presentation="$(presentation.Policy_Net6DesktopViewer)" key="Software\Policies\Citrix\ICA Client\DesktopViewer" valueName="Net6DesktopViewerEnabled">
+			<parentCategory ref="ClientEngine"/>
+			<supportedOn ref="SUPPORTED_Platform"/>
+			<enabledValue>
+				<string>True</string>
+			</enabledValue>
+			<disabledValue>
+				<string>False</string>
+			</disabledValue>
 		</policy>
 		<policy name="Policy_MSISettings_1" class="User" displayName="$(string.Policy_MSISettings)" explainText="$(string.Explain_MSISettings)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Network\Multi-Stream" valueName="MSIEnabled">
 			<parentCategory ref="MultiStreamICA"/>
@@ -6229,11 +6554,11 @@
 				<multiText id="LocalAppWhitelist_Value" valueName="LocalAppWhitelist"/>
 			</elements>
 		</policy>
-		<policy name="Policy_LocalAppProtection" class="Machine" displayName="$(string.Policy_LocalAppProtection)" explainText="$(string.Explain_LocalAppProtection)" presentation="$(presentation.presentation_LocalAppProtection)" key="Software\Policies\Citrix\Dazzle">
+		<policy name="Policy_LocalAppProtection" class="Machine" displayName="$(string.Policy_LocalAppProtection)" explainText="$(string.Explain_LocalAppProtection)" presentation="$(presentation.presentation_LocalAppProtection)" key="SOFTWARE\Policies\Citrix\AppProtection">
 			<parentCategory ref="SelfService"/>
 			<supportedOn ref="SUPPORTED_Platform"/>
 			<elements>
-				<multiText id="LocalAppProtectionlist_Value" valueName="ProtectedLocalApplist"/>
+				<multiText id="LocalAppProtectionlist_Value" valueName="localAppProtection"/>
 			</elements>
 		</policy>
 		<policy name="Policy_EnableAntiDLLInjection" class="Machine" displayName="$(string.Policy_EnableAntiDLLInjection)" explainText="$(string.Explain_EnableAntiDLLInjection)" presentation="$(presentation.Presentation_EnableAntiDLLInjection)" key="SOFTWARE\Policies\Citrix\AppProtection">
@@ -6271,6 +6596,13 @@
 			<supportedOn ref="SUPPORTED_NotSpecified"/>
 			<elements>
 				<multiText id="AntiDLLModuleAllowList_Value" valueName="AntiDLLInjectionModuleAllowList"/>
+			</elements>
+		</policy>
+		<policy name="Policy_USBFilterDriverExclusionList" class="Machine" displayName="$(string.Policy_USBFilterDriverExclusionList)" explainText="$(string.Explain_USBFilterDriverExclusionList)" presentation="$(presentation.presentation_USBFilterDriverExclusionList)" key="Software\Policies\Citrix\AppProtection">
+			<parentCategory ref="AppProtection"/>
+			<supportedOn ref="SUPPORTED_NotSpecified"/>
+			<elements>
+				<multiText id="USBFilterDriverExclusionList_Value" valueName="USBFilterDriverExclusionList"/>
 			</elements>
 		</policy>
 		<policy name="Policy_BlockDoubleHopLaunch" class="Machine" displayName="$(string.Policy_BlockDoubleHopLaunch)" explainText="$(string.Explain_BlockDoubleHopLaunch)" presentation="$(presentation.Policy_BlockDoubleHopLaunch)" key="Software\Policies\Citrix\AppProtection" valueName="BlockDoubleHopLaunch">

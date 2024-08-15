@@ -6,7 +6,7 @@
   </description>
   <resources>
     <stringTable>
-	  <string id="CITRIX_COMPONENTS">Citrix Components</string>
+      <string id="CITRIX_COMPONENTS">Citrix Components</string>
       <string id="CITRIX_COMPONENTS_HELP">The group policies in this folder can be used to manage your Citrix Systems Access Infrastructure.</string>
       <string id="Category_Citrix">Citrix Components</string>
       <string id="Category_Citrix_Explanation">This group policy can be used to to manage your Citrix clients.</string>
@@ -642,9 +642,9 @@ USB devices for which device drivers are not installed on the endpoint will be s
       <string id="ProxyType_Secure">Secure</string>
       <string id="ProxyType_Script">Script</string>
       <string id="Policy_EnableAutoUpdatePolicy">Citrix Workspace Updates</string>
-      <string id="Explain_EnableAutoUpdatePolicy">Not Configured â€“ Citrix Workspace Updates is enabled.
-Enabled â€“ Citrix Workspace Updates is enabled with the additional options listed in this dialog.
-Disabled â€“ Citrix Workspace Updates option is hidden from the Advanced Preferences sheet and you will not receive any update notifications.
+      <string id="Explain_EnableAutoUpdatePolicy">Not Configured – Citrix Workspace Updates is enabled.
+Enabled – Citrix Workspace Updates is enabled with the additional options listed in this dialog.
+Disabled – Citrix Workspace Updates option is hidden from the Advanced Preferences sheet and you will not receive any update notifications.
 
 Enable Citrix Workspace Update Policy:
 	Auto = Citrix Workspace checks for updates automatically. 
@@ -687,6 +687,8 @@ Citrix-Workspace-Update-DeferUpdate-Count:
       <string id="Explain_Proxy">The Citrix Workspace can be configured to use specific proxy routing for remote application and desktops.  These settings allow client proxies to be configured independently of other programs on the client machine.</string>
       <string id="AdvancePreferencesOptions">Advance Preferences Options</string>
       <string id="Explain_AdvancePreferencesOptions">Enable/Disable Options present in Advance Preferences</string>
+      <string id="TroubleshootingOptions">Troubleshooting Options</string>
+      <string id="Explain_TroubleshootingOptions">Enable/Disable Options present in Troubleshooting</string>
       <string id="ClientEngine">Client Engine</string>
       <string id="Explain_ClientEngine">The Citrix Workspace can be configured to interact with client engine configuration properties like ICA File Settings</string>
       <string id="MultiStreamICA">Multi-Stream ICA</string>
@@ -714,7 +716,7 @@ When the policy is disabled, the client will not allow connections to any server
 
 
 Troubleshooting:
-If a connection is refused because the client is not enabled, the error message "&lt;Server&gt; ERROR:  Cannot connect to the Citrix XenApp server.  The Server (â€¦) is not trusted for ICA connections.  Connections to the (All Regions) Region are not allowed by lockdown settings.  Please contact your administrator." appears.  
+If a connection is refused because the client is not enabled, the error message "&lt;Server&gt; ERROR:  Cannot connect to the Citrix XenApp server.  The Server (…) is not trusted for ICA connections.  Connections to the (All Regions) Region are not allowed by lockdown settings.  Please contact your administrator." appears.  
 
 If the client does not allow a connection because the version number is too low, the error message "Error number 2321:  ICA Client Configuration Manager:  The ICA Client version is too low to run using the installed configuration data." appears.</string>
       <string id="Part_EnableICAClient_Enable">Enable client</string>
@@ -858,7 +860,7 @@ Note: The TLS_RSA_* cipher suites can be disabled using the Deprecated cipher su
 
 The Certificate Revocation Check is used to improve the cryptographic authentication of the Citrix server and improves the overall security of the TLS connections between a client and a server. 
 Note: Certificate Revocation Check is valid only when SP800-52 Security Compliance mode is set.
-When you enable this setting, the client checks whether or not the serverâ€™s certificate is revoked. There are several levels to checking certificate revocation list.  For example, the client can be configured to check only its local certificate list, or to check the local and network certificate lists. In addition, certificate checking can be configured to allow users to log on only if all Certificate Revocation lists are verified.
+When you enable this setting, the client checks whether or not the server’s certificate is revoked. There are several levels to checking certificate revocation list.  For example, the client can be configured to check only its local certificate list, or to check the local and network certificate lists. In addition, certificate checking can be configured to allow users to log on only if all Certificate Revocation lists are verified.
 Certificate Revocation Check is an advanced feature supported by some certificate issuers. It allows an administrator to revoke security certificates (invalidated before their expiry date) in the case of compromise of the certificate private key.
 Applicable values for this setting are:
 
@@ -946,8 +948,8 @@ When connecting using the Web Interface, the Web Interface server must be aware 
 Both client and server machines must have correctly registered DNS entries.  This is necessary because endpoints will authenticate each other during connection.</string>
       <string id="Policy_SSONForNSG">Single Sign-on for NetScaler Gateway</string>
       <string id="Explain_SSONForNSG">Use this policy to allow the Workspace to use the same log on credentials (pass-through authentication) on NetScaler Gateway.</string>
-      <string id="Policy_EnableRCG">Enable Remote Credential Guard</string>
-      <string id="Explain_EnableRCG">This policy allows Citrix Workspace app to use Remote Credential Guard for single sign-on.  When this policy is enabled, the sign-in credentials (pass-through authentication) from the local machine are used to authenticate to the remote server without exchanging the actual username and password.
+      <string id="Policy_EnableRCG">Enhanced Domain passthrough for single sign-on</string>
+      <string id="Explain_EnableRCG">This policy allows Citrix Workspace app to use Enhanced Domain passthrough for single sign-on.  When this policy is enabled, the sign-in credentials (pass-through authentication) from the local machine are used to authenticate to the remote server without exchanging the actual username and password.
 
 This policy requires VDA version 2308 or later.</string>
       <string id="Policy_DisablePersistentCookies">Prevent storing persistent cookies</string>
@@ -965,7 +967,7 @@ When this policy is enabled, the client can be prevented from using the current 
 
 The client imposes certain restrictions specifying when pass-through authentication can occur (for details, see Citrix eDocs at http://support.citrix.com/proddocs/).  If these restrictions are too strict for your environment, select the "Allow pass-through authentication for all ICA connections" check box to bypass the pass-through authentication restrictions. 
 
-When run in a Novell Directory Server environment, selecting the "Use Novell Directory Server credentials" check box requests that the client uses the userâ€™s NDS credentials.  
+When run in a Novell Directory Server environment, selecting the "Use Novell Directory Server credentials" check box requests that the client uses the user’s NDS credentials.  
 
 
 Troubleshooting:
@@ -998,7 +1000,7 @@ When this policy is disabled, the client prevents the server from accessing or p
       <string id="Policy_LocalPort">Client hardware access</string>
       <string id="Explain_LocalPort">Use this policy to specify maximum number of serial ports supported by the client platform. 
 
-Also, use this policy to enable and restrict the remote application or desktop's access to the clientâ€™s serial, USB, and parallel ports. This allows the server to use locally attached hardware. 
+Also, use this policy to enable and restrict the remote application or desktop's access to the client’s serial, USB, and parallel ports. This allows the server to use locally attached hardware. 
 
 
 Troubleshooting:
@@ -1145,6 +1147,8 @@ When Access Remote session in full screen only is selected, the key combination 
       <string id="Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus">                             +</string>
       <string id="Part_Keyboard_Hotkey_Toggle_LOCALIME">Generic IME Mode:</string>
       <string id="Part_Keyboard_Hotkey_Toggle_LOCALIME_Plus">                             +</string>
+      <string id="Part_Keyboard_Hotkey_Toggle_RelativeMouse">Relative Mouse:</string>
+      <string id="Part_Keyboard_Hotkey_Toggle_RelativeMouse_Plus">                       +</string>
       <string id="Policy_PublishedApplications">Remote applications</string>
       <string id="Explain_PublishedApplications">Use this policy to configure the client's handling of remote applications.  
 
@@ -1159,6 +1163,15 @@ Published applications are denoted by a # in front of the application name.  Omi
 Session sharing is controlled by the SessionSharingKey that prevents applications launched from different Web Interface servers from sharing sessions.  In addition, applications with different graphics or security settings are prevented from sharing sessions.</string>
       <string id="Part_PublishedApplications_InitialProgram">Application</string>
       <string id="Part_PublishedApplications_SessionSharing">Session sharing</string>
+      <string id="Policy_Sleep">Power management</string>
+      <string id="Explain_Sleep">Use this policy to configure the whether the client system and its display are allowed to enter power-saving (sleep) mode.
+
+        When enabled, this policy controls whether the system and display are allowed to automatically enter sleep mode while a Citrix session is active.
+
+        Enable 'Prevent system sleep' to prevent the system from sleeping while a session is active.
+
+        Enable 'Prevent display sleep' to prevent the system's display from sleeping while a session is active.
+      </string>
       <string id="Policy_HostRenderedAudio">Audio through Generic USB Redirection</string>
       <string id="Explain_HostRenderedAudio">Use this policy to control audio redirection through Generic USB Redirection. This policy applies only to XenApp host.</string>
       <string id="Part_HostRenderedAudio">Enable Audio through Generic USB Redirection</string>
@@ -1168,12 +1181,15 @@ Session sharing is controlled by the SessionSharingKey that prevents application
       <string id="Policy_AllowLegacySessionSharing">Allow Legacy Session Sharing</string>
       <string id="Explain_AllowLegacySessionSharing">Allow session sharing for Program Neighborhood sessions</string>
       <string id="Part_AllowLegacySessionSharing_SessionSharing">AllowLegacySessionSharing</string>
+      <string id="Policy_Net6DesktopViewer">Enable .NET 6 Desktop Viewer</string>
+      <string id="Explain_Net6DesktopViewer">This policy controls whether to use .NET 6 Desktop Viewer.</string>
       <string id="Policy_MSISettings">Multi-Stream ICA</string>
       <string id="Explain_MSISettings">Use this policy to configure Multi-Stream ICA settings. This feature is enabled by default.</string>
       <string id="Policy_EnableFTU">EnableFTU</string>
       <string id="Policy_EnableSilentAuthForCloudStore">Silent authentication for Citrix Workspace</string>
       <string id="Policy_EnableQuickDesktopLaunch">Quick Desktop Launch Support</string>
       <string id="Policy_EnableEmptyInitialProgramLaunchRestriction">Do not allow desktop launch when InitialProgram setting is missing or empty in ICA file</string>
+      <string id="Policy_EnableCwaToCsaSso">Single sign-on to Citrix Secure Access client</string>
       <string id="Policy_BlockDirectICAFileLaunches">Secure ICA file session launch</string>
       <string id="Policy_EnableNPS">Enable NPS</string>
       <string id="Policy_EnableFTA">Enable FTA</string>
@@ -1192,6 +1208,8 @@ Session sharing is controlled by the SessionSharingKey that prevents application
       <string id="Policy_HideConnectionCenter">Hide Connection Center</string>
       <string id="Policy_HideDPIsettings">Hide DPI Settings</string>
       <string id="Policy_HideAdvancedPreferences">Hide Advanced Preferences</string>
+      <string id="Policy_HideTroubleshooting">Hide Troubleshooting</string>
+      <string id="Policy_HideSendFeedback">Hide Send Feedback</string>
       <string id="Policy_HideCitrixFiles">Hide Citrix Files</string>
       <string id="Policy_HideCitrixCasting">Hide Citrix Casting</string>
       <string id="Policy_SmartcardRemovalAction_x86">Smartcard Removal Policy for x86 machine</string>
@@ -1241,6 +1259,8 @@ The default will be at Launch or Refresh. Select the appropriate combination.
       <string id="Explain_EnableQuickDesktopLaunch">By enabling this feature, you can open your previously disconnected desktops instantly. Once this feature is enabled, Citrix Workspace app launches the disconnected sessions in hidden mode. The session is instantly presented as soon as you launch the desktop.
 </string>
       <string id="Explain_EnableEmptyInitialProgramLaunchRestriction">Do not allow desktop launch when InitialProgram setting is missing or empty in ICA file</string>
+      <string id="Explain_EnableCwaToCsaSso">When this policy is enabled and when already signed on to Citrix Workspace app, the same user is single signed on to Citrix Secure Access client using the store configured on the Citrix Workspace app.
+When disabled, users are required to provide sign-in credentials on Citrix Secure Access app.</string>
       <string id="Explain_BlockDirectICAFileLaunches">This policy allows session launch from Citrix-signed executables only.
 
 It blocks session launch from any other untrusted processes and disables direct session launch using the ICA file.
@@ -1248,8 +1268,8 @@ It blocks session launch from any other untrusted processes and disables direct 
       <string id="Explain_EnableNPS">The Net Promoters Score (NPS) helps you to rate and provide feedback on your experience with Citrix Workspace for Windows (Store). This feedback service aims to improve Citrix Workspace for Windows (Store). The rating and feedback help to provide a better user experience. By default this feature is enabled.
 Note: If you select 4 or 5 as the rating, you are redirected to rate the Citrix Workspace app in the Microsoft Store. If you select 3 or lower, you are redirected to a feedback form where you can provide more details on your rating.
 Options:
-1. Enabled â€“ The NPS dialog appears on every sixth successful connection.
-2. Disabled â€“ The NPS dialog does not appear.
+1. Enabled – The NPS dialog appears on every sixth successful connection.
+2. Disabled – The NPS dialog does not appear.
 </string>
       <string id="Explain_Vprefer">You can now control whether the remote Citrix Workspace app launches the instance of an application installed on first hop server/desktop (if available) in preference to launching a remote application. 
 
@@ -1275,6 +1295,8 @@ When the 'Enable FTA' is disabled, setting this policy will take no effect. The 
       <string id="Explain_HideLocalKeyboardLayoutSetting">Use this to hide/unhide the Local Keyboard Layout Setting Dialog from Advanced Preferences</string>
       <string id="Explain_HideConnectionCenter">Use this to hide/unhide the Connection Center Dialog from Advanced Preferences</string>
       <string id="Explain_HideAdvancedPreferences">Use this option to hide/unhide the Advanced Preferences option from the Citrix Workspace app icon in the notification area</string>
+      <string id="Explain_HideTroubleshooting">Use this option to hide/unhide the Troubleshooting option from the Citrix Workspace app icon in the notification area</string>
+      <string id="Explain_HideSendFeedback">Use this option to hide/unhide the Send Feedback option from Troubleshooting</string>
       <string id="Explain_HideDPIsettings">Use this to hide/unhide the DPI Settings from Advanced Preferences</string>
       <string id="Explain_HideCitrixFiles">Use this to hide/unhide the Citrix Files from Advanced Preferences</string>
       <string id="Explain_HideCitrixCasting">Use this to hide/unhide the Citrix Casting Dialog from Advanced Preferences</string>
@@ -1293,7 +1315,7 @@ This policy is applicable only to 64 bit OS. To check the OS bit type for Window
 
 To be able to enable this policy, ensure that the Smart Card Removal option is set on WI XenApp Services. Refer to XenApp documentation for the procedure on setting Smart Card Removal on XenApp. When the policy is Enabled, the user will continue to be logged in to the Citrix Workspace despite removing the smart card from the client. The user, however, will be logged off from the XenApp session.
 
-When the Policy is disabled, Userâ€™s XenApp session will always be disconnected if the Smart card is removed from Client device and Smart Card removal on the WI XenApp Services does not have any effect. 
+When the Policy is disabled, User’s XenApp session will always be disconnected if the Smart card is removed from Client device and Smart Card removal on the WI XenApp Services does not have any effect. 
 </string>
       <string id="Explain_HideSettings">This policy allows you to manage application shortcuts on desktop and startup along with workspace settings via UI. End user needs control over how the apps are spread out in the start menu. The UI provides an option to place the shortcuts in a start menu folder chosen by the user. The same control is also given for desktop shortcuts. Also provides an UI for managing workspace control settings. By doing this, we uplift the usability attribute of windows Citrix Workspace app.
 
@@ -1366,7 +1388,7 @@ https://sales.mycompany.com/Citrix/Store/discovery
       <string id="Fast_Connect_API_Support">Fast Connect API Support</string>
       <string id="Explain_FastConnect">These policies control Fast Connect API support</string>
       <string id="Policy_FastConnectAPI_Support">Manage FastConnectAPI Support</string>
-      <string id="Explain_FastConnectAPI_Support">Fast Connect API facilitates user switching by providing an API to quickly change a userâ€™s identity in Citrix Workspace.  
+      <string id="Explain_FastConnectAPI_Support">Fast Connect API facilitates user switching by providing an API to quickly change a user’s identity in Citrix Workspace.  
 
 -Enable Fast Connect API:  This options enables fast user switching by providing an API to change new user
 
@@ -1524,20 +1546,20 @@ When Disabled browser cookies and resources are not stored.
 
 This feature provides you with the following options:
 
-    â€¢ Allow dynamic sync -  Synchronizes the client keyboard layout to the server when you make any changes. When selected, this option also enables the client IME for East Asian languages.
+    • Allow dynamic sync -  Synchronizes the client keyboard layout to the server when you make any changes. When selected, this option also enables the client IME for East Asian languages.
       Selecting Yes for this option overrides the following two options.
 		
-    â€¢ Sync only once â€“ when session starts â€“ Synchronizes the client keyboard layout to the server when the session launches. Any changes you make to the client keyboard layout during the session do not take effect immediately. To apply the changes, log off and log back on.
+    • Sync only once – when session starts – Synchronizes the client keyboard layout to the server when the session launches. Any changes you make to the client keyboard layout during the session do not take effect immediately. To apply the changes, log off and log back on.
 	
-    â€¢ Donâ€™t sync - Indicates that the client uses the keyboard layout present on the server.
+    • Don’t sync - Indicates that the client uses the keyboard layout present on the server.
 
 This policy is not configured by default. When you disable this policy, the client keyboard layout is synchronized to server only when the session is launched.
 	  </string>
       <string id="yes_always_sync_keyboard_layout">Yes</string>
       <string id="no_always_sync_keyboard_layout">No</string>
-      <string id="not_sync_keyboard_layout_once">Donâ€™t sync</string>
+      <string id="not_sync_keyboard_layout_once">Don’t sync</string>
       <string id="sync_specific_keyboard_layout_once">Sync specific keyboard layout only once when the session is launched</string>
-      <string id="sync_current_keyboard_layout_once">Sync only once â€“ when session starts</string>
+      <string id="sync_current_keyboard_layout_once">Sync only once – when session starts</string>
       <string id="no_hide_language_bar">No, hide the language bar</string>
       <string id="Policy_IME_Settings">Language bar</string>
       <string id="Explain_IME_Settings">Select the required option to display the language bar in a session.  The language bar displays the preferred input language in a session.
@@ -1553,7 +1575,7 @@ This policy is not configured by default. When you disable this policy, the lang
 
 -Enable Anti-ScreenCapture: Enabling this option will prevent user from taking screenshots and sharing screen.
 
-Note: This policy doesnâ€™t apply to your virtual app and web/SaaS app sessions.
+Note: This policy doesn’t apply to your virtual app and web/SaaS app sessions.
 
 IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect.
 	  </string>
@@ -1566,12 +1588,12 @@ IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect
 
 -Enable Anti-ScreenCapture: Enabling this option will prevent user from taking screenshots and sharing screen.
 
-Note: This policy doesnâ€™t apply to your virtual app and web/SaaS app sessions.
+Note: This policy doesn’t apply to your virtual app and web/SaaS app sessions.
 
 IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect.
 	  </string>
       <string id="Policy_StoreAuthenticationTokens">Store authentication tokens</string>
-      <string id="Explain_StoreAuthenticationTokens">Use this policy to store authentication tokens. Authentication tokens are encrypted and stored on the disk so that you donâ€™t need to reenter the credentials in case of a system reboot or when Citrix Workspace App is restarted.
+      <string id="Explain_StoreAuthenticationTokens">Use this policy to store authentication tokens. Authentication tokens are encrypted and stored on the disk so that you don’t need to reenter the credentials in case of a system reboot or when Citrix Workspace App is restarted.
 
 Enabled or Not Configured indicates that the authentication tokens are stored. This is the default option.
 
@@ -1582,7 +1604,7 @@ This policy is only applicable to cloud deployments.
       <string id="Policy_Enable_EdgeChromium">Microsoft Edge WebView for StoreFront authentication </string>
       <string id="Policy_Enable_EdgeChromium_SupportedOn">Citrix Workspace app for Windows 2302 and above.</string>
       <string id="Explain_Enable_EdgeChromium">Requirements:
-Microsoft Edge WebView2 Runtime version 112 or later.
+Microsoft Edge WebView2 Runtime version 119 or later.
 	  
 This policy allows to control the webview in which StoreFront authentication related web content is loaded.
 
@@ -1730,6 +1752,33 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
       "filePath": "%PROGRAMFILES%\\trusted\\logging.dll"
     }
     ]
+    </string>
+      <string id="Policy_USBFilterDriverExclusionList">USB Filter Driver Exclusion List</string>
+      <string id="Explain_USBFilterDriverExclusionList">This feature is to exclude the USB devices which have compatibilty issues with App Protection feature.
+	
+When the policy is:
+
+Not Configured - None of the USB devices are part of the exclusion list. USB Filter attaches to all the USB devices if App Protection is active.
+
+Enabled - Excludes the USB devices(Pairs of vendor ID and product ID) mentioned in the exclusion list from the App Protection.
+
+Disabled - Clears device exclusion list.
+
+The USB Filter Driver Exclusion List field allows admins to add pairs of vendor ID and product ID information that can be excluded from the App Protection.
+  
+Sample format to add vendor IDs and product IDs to the exclusion list:
+[
+{
+	"deviceName": "Device1",
+	"vendorID": "FFFF",
+	"productID": "FFFF"
+},
+{
+	"deviceName": "Device2",
+	"vendorID": "FFFF",
+	"productID": "FFFF"
+}
+]
     </string>
       <string id="Policy_BlockDoubleHopLaunch">Block DoubleHop Launch</string>
       <string id="Explain_BlockDoubleHopLaunch">If Enabled, Virtual Apps and Desktops configured with App Protection policies cannot be launched from within a Virtual Desktop.</string>
@@ -1944,6 +1993,8 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus" defaultItem="8">                             +</dropdownList>
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_LOCALIME" defaultItem="3">Generic IME Mode:</dropdownList>
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_LOCALIME_Plus" defaultItem="7">                             +</dropdownList>
+        <dropdownList refId="Part_Keyboard_Hotkey_Toggle_RelativeMouse" defaultItem="2">Relative Mouse:</dropdownList>
+        <dropdownList refId="Part_Keyboard_Hotkey_Toggle_RelativeMouse_Plus" defaultItem="4">                       +</dropdownList>
       </presentation>
       <presentation id="Policy_Keyboard_Settings">
         <dropdownList refId="Always_Sync_Keyboard_Layout" noSort="true" defaultItem="0">Allow dynamic sync</dropdownList>
@@ -1966,6 +2017,10 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
         <textBox refId="Part_ExtraURLProtocols">
           <label>ExtraURL protocols</label>
         </textBox>
+      </presentation>
+      <presentation id="Policy_Sleep">
+        <checkBox refId="Part_Sleep_InhibitSystemSleep" defaultChecked="false">Prevent system sleep</checkBox>
+        <checkBox refId="Part_Sleep_InhibitDisplaySleep" defaultChecked="false">Prevent display sleep</checkBox>
       </presentation>
       <presentation id="Policy_EngineErrMsg" />
       <presentation id="Polciy_CEIP" />
@@ -2017,6 +2072,7 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
       <presentation id="Policy_EnableFTU" />
       <presentation id="Policy_EnableSilentAuthForCloudStore" />
       <presentation id="Policy_EnableEmptyInitialProgramLaunchRestriction" />
+      <presentation id="Policy_EnableCwaToCsaSso" />
       <presentation id="Policy_BlockDirectICAFileLaunches" />
       <presentation id="Policy_EnableNPS" />
       <presentation id="Policy_Vprefer">
@@ -2025,6 +2081,7 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
       <presentation id="Policy_EnableFTA" />
       <presentation id="Policy_EnableDefaultFTA" />
       <presentation id="Policy_HideAdvancePreferencesOptions" />
+      <presentation id="Policy_HideTroubleshootingOptions" />
       <presentation id="Policy_SmartcardRemovalAction" />
       <presentation id="Policy_HideSettings">
         <dropdownList refId="Pick_UI_display" defaultItem="2">Choose the appropriate display of settings UI.</dropdownList>
@@ -2243,6 +2300,8 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_Latency_Reduction_Plus" defaultItem="9">                             +</dropdownList>
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_LOCALIME" defaultItem="1">Generic IME Mode:</dropdownList>
         <dropdownList refId="Part_Keyboard_Hotkey_Toggle_LOCALIME_Plus" defaultItem="8">                             +</dropdownList>
+        <dropdownList refId="Part_Keyboard_Hotkey_Toggle_RelativeMouse" defaultItem="2">Relative Mouse:</dropdownList>
+        <dropdownList refId="Part_Keyboard_Hotkey_Toggle_RelativeMouse_Plus" defaultItem="4">                       +</dropdownList>
       </presentation>
       <presentation id="Policy_Keyboard_Settings_1">
         <dropdownList refId="Always_Sync_Keyboard_Layout" noSort="true" defaultItem="0">Allow dynamic sync</dropdownList>
@@ -2269,6 +2328,7 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
       <presentation id="Policy_AllowLegacySessionSharing">
         <checkBox refId="Part_AllowLegacySessionSharing_SessionSharing" defaultChecked="true">AllowLegacySessionSharing</checkBox>
       </presentation>
+      <presentation id="Policy_Net6DesktopViewer" />
       <presentation id="EnableICAFileSigning">
         <listBox refId="TrustedCertificates">Trusted Certificates:</listBox>
         <dropdownList refId="Securitypolicy" defaultItem="0">Security policy:</dropdownList>
@@ -2353,6 +2413,9 @@ Disabled - Anti-DLL injection will be disabled for Citrix Auth Manager, Citrix W
       </presentation>
       <presentation id="presentation_AntiDLLModuleAllowList">
         <multiTextBox refId="AntiDLLModuleAllowList_Value">Anti-DLL Injection Module Allow List</multiTextBox>
+      </presentation>
+      <presentation id="presentation_USBFilterDriverExclusionList">
+        <multiTextBox refId="USBFilterDriverExclusionList_Value">USB Filter Driver Exclusion List</multiTextBox>
       </presentation>
       <presentation id="Policy_BlockDoubleHopLaunch" />
       <presentation id="Policy_EnableRCG" />
