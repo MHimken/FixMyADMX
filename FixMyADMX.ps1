@@ -32,10 +32,10 @@ PS> .\FixMyADMX.ps1 -ADMXFileLocation 'C:\users\MHimken\Downloads\CitrixADMX\rec
 Will attempt to apply all fixes within this script. This is is the minimum amount of parameters required 
 
 .NOTES
-    Version: 1.0
+    Version: 1.1
     Versionname: Aversion for Citrix
     Intial creation date: 06.08.2023
-    Last change date: 06.08.2023
+    Last change date: 22.05.2025
     Latest changes: https://github.com/MHimken/FixMyADMX/blob/master/changelog.md
 #>
 [CmdletBinding()]
@@ -54,21 +54,6 @@ if (-not(Test-Path $LogDirectory)) { New-Item $LogDirectory -ItemType Directory 
 $LogPrefix = 'FMA_'
 $LogFile = Join-Path -Path $LogDirectory -ChildPath ('{0}_{1}.log' -f $LogPrefix, $DateTime)
 
-$Script:PathToScript = if ( $PSScriptRoot ) { 
-    # Console or VS Code debug/run button/F5 temp console
-    $PSScriptRoot 
-} else {
-    if ( $psISE ) { Split-Path -Path $psISE.CurrentFile.FullPath }
-    else {
-        if ($profile -match 'VScode') { 
-            # VS Code "Run Code Selection" button/F8 in integrated console
-            Split-Path $psEditor.GetEditorContext().CurrentFile.Path 
-        } else { 
-            Write-Output 'unknown directory to set path variable. exiting script.'
-            exit
-        } 
-    } 
-}
 if (-not(Test-Path $WorkingDirectory)) { New-Item -Path $WorkingDirectory -ItemType Directory -Force | Out-Null } 
 $CurrentLocation = Get-Location
 Set-Location $WorkingDirectory
@@ -229,18 +214,17 @@ function Repair-ADMLComboBox {
     }
     return $true
 }
-
 function Repair-ADMXWindowsReferences {
     [xml]$ADMXToChange = Get-Content $script:SaveADMXToWorkingDirectoryPath
     $UsingWindowsADMX = ('Microsoft.Policies.Windows' -in $ADMXToChange.policyDefinitions.policyNamespaces.using.namespace)
     if ($UsingWindowsADMX) {
         Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath has the windows.admx added to its namespace" -Component 'FMAADMXRepairWindowsReferences'
         [string]$RawADMX = Get-Content $script:SaveADMXToWorkingDirectoryPath | Select-String -Pattern 'Windows:'
-        if ($RawADMX) {
+        if ($RawADMX -ne "") {
             Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is actively using a 'Windows:' reference, which needs to be replaced. Consult the blog to find out more about this issue" -Component 'FMAADMXRepairWindowsReferences' -Type 2
             return $false
         } else {
-            Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is not actively using a 'Windows:' reference - removing namespace" -Component 'FMAADMXRepairWindowsReferences'
+            Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is NOT actively using a 'Windows:' reference - removing namespace" -Component 'FMAADMXRepairWindowsReferences'
             $WindowsReference = $ADMXToChange.policyDefinitions.policyNamespaces.using | Where-Object { $_.namespace -eq 'Microsoft.Policies.Windows' }
             $ADMXToChange.policyDefinitions.policyNamespaces.RemoveChild($WindowsReference)
             $ADMXToChange.Save($script:SaveADMXToWorkingDirectoryPath)

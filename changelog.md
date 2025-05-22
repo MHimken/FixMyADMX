@@ -1,5 +1,9 @@
 # Changes
 
+## May 2025
+
+- Fix: Removing the windows.admx failed if PowerShell 7 was used because 'select-string' returned a non-null value
+
 ## August 2024
 
 - Update: Citrix receiver example
