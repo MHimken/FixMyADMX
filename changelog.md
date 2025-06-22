@@ -1,5 +1,10 @@
 # Changes
 
+## June 2025
+
+- Fix: Paths missing a trailing slash a now properly handled
+- Add: Will now cleanup working files if no changes were done
+
 ## May 2025
 
 - Fix: Removing the windows.admx failed if PowerShell 7 was used because 'select-string' returned a non-null value

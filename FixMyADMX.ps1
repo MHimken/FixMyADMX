@@ -26,16 +26,17 @@ Default: C:\FixMyADMX\
 .PARAMETER LogDirectory
 Provide a log directory
 Default: $WorkingDirectory\Logs\
-
+.PARAMETER ToConsole
+Will output to console _instead_ of a logfile. This might be helpful if you need output piped to something else than a file.
 .EXAMPLE
 PS> .\FixMyADMX.ps1 -ADMXFileLocation 'C:\users\MHimken\Downloads\CitrixADMX\receiver.admx' -ADMLFileLocation 'C:\users\MHimken\Downloads\CitrixADMX\receiver.adml'
 Will attempt to apply all fixes within this script. This is is the minimum amount of parameters required 
 
 .NOTES
-    Version: 1.1
+    Version: 1.2
     Versionname: Aversion for Citrix
     Intial creation date: 06.08.2023
-    Last change date: 22.05.2025
+    Last change date: 22.06.2025
     Latest changes: https://github.com/MHimken/FixMyADMX/blob/master/changelog.md
 #>
 [CmdletBinding()]
@@ -45,7 +46,8 @@ param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
     [System.IO.FileInfo]$ADMLFileLocation,
     [System.IO.DirectoryInfo]$WorkingDirectory = 'C:\FixMyADMX\',
-    [System.IO.DirectoryInfo]$LogDirectory = "$WorkingDirectory\Logs\"
+    [System.IO.DirectoryInfo]$LogDirectory = "$WorkingDirectory\Logs\",
+    [Switch]$ToConsole
 )
 #Prepare folders and files
 $Script:TimeStampStart = Get-Date
@@ -60,8 +62,8 @@ Set-Location $WorkingDirectory
 function Write-Log {
     <#
     .DESCRIPTION
-        This is a modified version of Ryan Ephgrave's script
-    .LINK
+        This is a modified version of the script by Ryan Ephgrave.
+        .LINK
         https://www.ephingadmin.com/powershell-cmtrace-log-function/
     #>
     Param (
@@ -71,29 +73,31 @@ function Write-Log {
         # Type: 1 = Normal, 2 = Warning (yellow), 3 = Error (red)
         [ValidateSet('1', '2', '3')][int]$Type
     )
-    $Time = Get-Date -Format 'HH:mm:ss.ffffff'
-    $Date = Get-Date -Format 'MM-dd-yyyy'
-    if (-not($Component)) { $Component = 'Runner' }
-    if (-not($Type)) { $Type = 1 }
-    $LogMessage = "<![LOG[$Message" + "]LOG]!><time=`"$Time`" date=`"$Date`" component=`"$Component`" context=`"`" type=`"$Type`" thread=`"`" file=`"`">"
-    $LogMessage | Out-File -Append -Encoding UTF8 -FilePath $LogFile
-    if ($Verbose) {
-        switch ($Type) {
-            1 { Write-Host $Message }
-            2 { Write-Warning $Message }
-            3 { Write-Error $Message }
-            default { Write-Host $Message }
-        }        
+    if (-not($NoLog)) {
+        $Time = Get-Date -Format 'HH:mm:ss.ffffff'
+        $Date = Get-Date -Format 'MM-dd-yyyy'
+        if (-not($Component)) { $Component = 'Runner' }
+        if (-not($ToConsole)) {
+            $LogMessage = "<![LOG[$Message" + "]LOG]!><time=`"$Time`" date=`"$Date`" component=`"$Component`" context=`"`" type=`"$Type`" thread=`"`" file=`"`">"
+            $LogMessage | Out-File -Append -Encoding UTF8 -FilePath $LogFile
+        } elseif ($ToConsole) {
+            switch ($type) {
+                1 { Write-Host "T:$Type C:$Component M:$Message" }
+                2 { Write-Host "T:$Type C:$Component M:$Message" -BackgroundColor Yellow -ForegroundColor Black }
+                3 { Write-Host "T:$Type C:$Component M:$Message" -BackgroundColor Red -ForegroundColor White }
+                default { Write-Host "T:$Type C:$Component M:$Message" }
+            }
+        }
     }
 }
 function Backup-PolicyFiles {
     Write-Log -Message "Creating a backup of $script:ADMXFileLocation and $script:ADMLFileLocation" -Component 'FMABackup'
     $FilenameADML = $(Split-Path -Path $script:ADMLFileLocation -Leaf)
     $FileNameADMX = $(Split-Path -Path $script:ADMXFileLocation -Leaf)
-    $BackupADMLPath = $WorkingDirectory.ToString() + "Original_$FilenameADML"
-    $BackupADMXPath = $WorkingDirectory.ToString() + "Original_$FileNameADMX"
-    $script:SaveADMLToWorkingDirectoryPath = $WorkingDirectory.ToString() + $FilenameADML
-    $script:SaveADMXToWorkingDirectoryPath = $WorkingDirectory.ToString() + $FilenameADMX
+    $BackupADMLPath = Join-Path -Path $WorkingDirectory -ChildPath "Original_$FilenameADML"
+    $BackupADMXPath = Join-Path -Path $WorkingDirectory -ChildPath "Original_$FilenameADMX"
+    $script:SaveADMLToWorkingDirectoryPath = Join-Path -Path $WorkingDirectory -ChildPath $FilenameADML
+    $script:SaveADMXToWorkingDirectoryPath = Join-Path -Path $WorkingDirectory -ChildPath $FilenameADMX
     Copy-Item -Path $script:ADMXFileLocation -Destination $script:SaveADMXToWorkingDirectoryPath -Force | Out-Null
     Copy-Item -Path $script:ADMXFileLocation -Destination $BackupADMXPath -Force | Out-Null
     Copy-Item -Path $script:ADMLFileLocation -Destination $script:SaveADMLToWorkingDirectoryPath -Force | Out-Null
@@ -236,6 +240,12 @@ function Repair-ADMXWindowsReferences {
 }
 function Repair-Files {
     Write-Log -Message 'Attempting to repair files' -Component 'FMARepairCore'
+    # The Windows.admx is often referenced, because in Microsofts examples its an imported namespace - it might be completely unnecessary...
+    if (-not(Repair-ADMXWindowsReferences)) {
+        Write-Log -Message 'Failed to replace the Windows: references used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
+        $script:WindowsReference = $true
+        return $false
+    }
     # Because comboBox is not supported in the ADML
     if (-not(Repair-ADMLComboBox)) {
         Write-Log -Message 'Failed to replace the ComboBoxes used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
@@ -246,14 +256,13 @@ function Repair-Files {
         Write-Log -Message 'Failed to replace the ADMXExplainText used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
         return $false
     }
-    # The Windows.admx is often referenced, because in Microsofts examples its an imported namespace - it might be completely unnecessary...
-    if (-not(Repair-ADMXWindowsReferences)) {
-        Write-Log -Message 'Failed to replace the Windows: references used in the ADML-file - please consult the log' -Component 'FMARepairCore' -Type 3
-        return $false
-    }
 }
 function Clear-TempFiles {
-    #NothingToDoYet
+    if($script:WindowsReference){
+        Write-Log -Message 'The working files have been cleaned up due to the discovery of a "Windows" reference, meaning that no other repairs were attempted.' -Component CleanUp
+        Remove-Item -Path $script:SaveADMLToWorkingDirectoryPath
+        Remove-Item -Path $script:SaveADMXToWorkingDirectoryPath
+    }
 }
 #Start Coding!
 Backup-PolicyFiles
