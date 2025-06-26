@@ -4,6 +4,7 @@
 
 - Fix: Paths missing a trailing slash a now properly handled
 - Add: Will now cleanup working files if no changes were done
+- Update: Updated example files with their respective latest versions
 
 ## May 2025
 

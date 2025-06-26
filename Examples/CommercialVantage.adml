@@ -7,8 +7,20 @@
       <string id="03E445D7B5956335BEDEF9340AC7E092">Commercial Vantage</string>
       <string id="261C3D29FFEB46D46D29941DC7D22786">EULA</string>
       <string id="0B297BC05A42F20C522B7E7C49F3DA4C">Accept EULA Automatically</string>
-      <string id="4E37FF4B9B1BE7FB138A9FBD55E9364E">When you use this policy to disable the end user EULA and Privacy window, a notification will go back to Lenovo that the EULA has been accepted.  No other data is collected</string>
+      <string id="5F5905C8BB2F06E52DD9377FD2F89EB8">This Group Policy disables the Lenovo End User License Agreement (EULA) and the Lenovo Privacy Statement Pop up displayed at the first time Commercial Vantage is launched.</string>
       <string id="73B91784D50BFD64ED39D61C739EC237">Windows 10</string>
+      <string id="856C8C55266137062827DD27AEDB1FA5">Metrics</string>
+      <string id="E1E39CE58D7F99B6A70B61A8F32E7A49">Turn off Metrics Collection</string>
+      <string id="D181581E9B89345A3BFBC495FBA00442">This Group Policy prevents Data Collection by Commercial Vantage. If this group policy is enabled, the Lenovo Commercial Vantage will not report any metrics information for example the EULA acceptance.
+
+If this group policy is disabled or not configured, the Lenovo Commercial Vantage will send a report to Lenovo.</string>
+      <string id="3DF937718C9E5B329933E1B978EF7778">Smart Care</string>
+      <string id="5DD3847B0FEAE23C43E50AAB2C63B57B">Turn on Smart Care</string>
+      <string id="B45B58412AD01A8E460C99E4BBA80CEC">This Group Policy determines whether the Smart Care is available in the Commercial Vantage or not. By default, the service is not displayed and can't be accessed by the end user of the device.
+
+If you enable this setting, the Smart Care will be shown in the Commercial Vantage if the device is connected to the internet. The end user will be able to see the Smart Care support service.
+
+If you disable or do not configure this setting, the Smart Care page will not be displayed and the user will not be able to access the Smart Care support service via Commercial Vantage.</string>
       <string id="8BEB3CE1E181B089EC89D4C4E6A3D448">Toast Message</string>
       <string id="F6C85801C43C891802501E0874EC5250"> Turn Off toast messages</string>
       <string id="2E7D3FFB97453F234DEE49F720A033FF">When this policy is enabled, toast messages will not be displayed to end-users.</string>
@@ -37,12 +49,27 @@ If you enable it, the warranty information will be removed from the Commercial V
 If you disable or not config it, the warranty information will be shown.</string>
       <string id="2492D59A8DA5CE04117CB7BB1381F888">Write warranty information to WMI table</string>
       <string id="BE0A32529A0440F7D5F560CC726CB9BD">This policy setting allows the Administrator to enable Commercial Vantage to writing the warranty information for the system into the Lenovo Namespace WMI table. If you enable it, the warranty information will be written into WMI table. If you disable or not config it, the warranty information will not be written into WMI table.</string>
+      <string id="01117C8E37FB5C5F1D126E386D8788DA">Modes</string>
+      <string id="BA0C56890927B4AAD8674FC9D0B69042">Turn off Modes</string>
+      <string id="5BDC9574046637DF444A9C0BF87ED908">This Group Policy setting prevents the end-users of the device from using the the Modes page in My Device page. It determines whether the Modes functionality is available in the Commercial Vantage or not, and whether the users will be able to use Lenovo Desktop Widget. By default, the page is displayed and can be accessed by the end user of the device.
+
+If you enable this setting, the Modes page will be hidden from the Commercial Vantage. The end user will not be able to see the Modes tab in the Device Settings and will not be able to use Lenovo Desktop Widget on the device. 
+
+If you disable or do not configure this setting, the Modes will be displayed and the user will be able to use the Lenovo Desktop Widget. </string>
       <string id="8BFC79DE8BB6F9B73316906802BA1CF8">Device Settings</string>
       <string id="7E545BC0614659EAE91DA1E4090FAF9B">Turn off Smart Assist</string>
       <string id="AC9B0122EC1A9FBC340AE4EB15E8FA6A">When this policy is enabled, Smart Assist feature of Commercial Vantage will be turned off.</string>
       <string id="385B0718B3A5821F493B8F1F0424A68D">Microphone</string>
       <string id="95B863C7A675FCD8D26113FEEF9390F1">Turn off Microphone Settings</string>
       <string id="BDA4A033173928D2715DC5BBD249F984">When this policy is enabled, the Microphone Settings features of Commercial Vantage will be turned off</string>
+      <string id="762B62E71306E25080117D5A0CB106F1">Turn off Smart Noise Cancelling</string>
+      <string id="B876E5339683AC9CFDAA04D0A243B1F9">This Group Policy setting affects the Smart Noise Cancelling setting in the Microphone tab in the Commercial Vantage. It determines whether the setting is displayed and whether the users can utilize the features of AI noise suppression. By default, the setting is visible and can be updated by the end user of the device. 
+
+Enabled: Enabling this setting turns off and hides the Smart Noise Cancelling feature from the Commercial Vantage. In case the Noise Cancelling settings have been modified prior to enabling this group policy, all the changes will be rolled back and the settings will be reset to default. 
+
+Disabled: If you disable this setting, the Smart Noise Cancelling feature will be visible and the users will be able to update the settings  through Commercial Vantage. 
+
+Not Configured: Leaving this setting unconfigured maintains the default behavior. Users can freely access and update the Smart Noise Cancelling section in the Microphone page in  the Commercial Vantage.</string>
       <string id="E4F5170489B8C677D42DEB4590E140A7">Power</string>
       <string id="E0DE3C7CF87888866A8F22728790A7F7">Turn off Standby Settings</string>
       <string id="00E5B7AFF9D7682352B4F3AF29247EF2">When this policy is enabled, the Standby Settings features of Commercial Vantage will be turned off</string>
@@ -62,10 +89,10 @@ When the toggle to "automatically set threshold" is on then Battery Threshold "S
       <string id="F425A36AA9AE4B8498348A9B5DCA6C87">When this policy is enabled, the Energy Star features of Commercial Vantage will be turned off</string>
       <string id="34614CC8F51620B40F9D62FCCECB9D10">Turn off Power Settings</string>
       <string id="D4965103224D8D7D2353EC9D75E59061">When this policy is enabled, the Power Settings of Commercial Vantage will be turned off</string>
-      <string id="6705E49344F4667086A7CC519EE2BE8B">Turn off Power Smart Settings</string>
-      <string id="86D80A02F33F5EE47BD631C87652051C">When this policy is Enabled,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be hidden.
-When this policy is Disabled,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.
-When this policy is Not Configured,  the Power Smart Settings (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.</string>
+      <string id="72262ED0D05B54AC96C642CD8EA99530">Turn off Global Power Management</string>
+      <string id="DBDAAE7201EAA646049C956B3633DF0F">When this policy is Enabled,  the Global Power Management (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be hidden.
+When this policy is Disabled,  the Global Power Management (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.
+When this policy is Not Configured,  the Global Power Management (Intelligent Cooling/Intelligent Cooling Engine) of Commercial Vantage will be shown.</string>
       <string id="77E76F7B2AEA0F004DE0F8323929C5FA">Turn off DPM Power Settings</string>
       <string id="4611E3287E6ED02AAC05728E15AC7018">When this policy is enabled, the DPM Power Settings of Commercial Vantage will be turned off</string>
       <string id="A784DA18A4178CCC12A14FF48D2FE97F">Write battery information to WMI table</string>
@@ -95,8 +122,12 @@ If you disable or do not configure this policy setting, the battery information 
       <string id="162A79B7E43E726881D582DBA5C8B0B7">System Update</string>
       <string id="9C2A75593708F3D12E2334EBE2D8C712">System Update Repository</string>
       <string id="833C377638391DCF96DBC57EA8A457F3">Defines the location of where System Update will pickup available content.</string>
+      <string id="9E369EF6FC873E867D377DDF80ACF1AA">Test Content Mode</string>
+      <string id="010AA66AD0BC7E9EDC00EEA51269380E">When enabled, this policy will cause System Update to only process packages that have a Status of "Test" in the local repository.  This policy only takes effect if a local repository is configured by the System Update Repository policy.  If this policy is not configured or disabled, then only packages with a Status of "Active" will be processed from the local repository.</string>
+      <string id="4285A5195081E21E94074C7E74805F1E">Company Name</string>
+      <string id="1B5FDD1C627A0FC0A7F744D276A5C8E8">Defines the Company Name to be displayed on the System Update dialogs. Excessively long names may be truncated.</string>
       <string id="1BA8F9AFA53BA0102A3C8422D7D21708">Configure System Update</string>
-      <string id="994E9BBFA8CCD84D2AFDF381589D54D8">This policy setting provides the ability for the Administrator to config the filter of searching updates.
+      <string id="23B154CFAC905E849A84180956F41F0C">This policy setting provides the ability for the Administrator to config the filter of searching updates.
 
 If you enable this policy setting, Commercial Vantage will searching for updates base on this filter.
 
@@ -104,7 +135,7 @@ If you disable this policy setting, Commercial Vantage will searching for all av
 
 Not config is the same as disabled.
 
-This policy affects both manual and auto update.</string>
+This policy affects manual update, but if 'Configure Auto System Update' is not configured, it affects both manual and auto update.</string>
       <string id="E4FF6280DA9B32B3629E2DCFE74DCCDB">Auto Update</string>
       <string id="4286E43EF428E913AB84DAF25C3FFDBB">Schedule the Month for Auto Update</string>
       <string id="FF8EE1C92F629A2893004C4073E05F93">This policy setting provides the ability for the Administrator to configure the months in which Auto Update will occur.  You can mark the checkbox that corresponds to the desired month(s). If you click "All" plus other individual months, the individual months will take precedence over "All".  If you do not select any months, the policy will be ignored.  If this policy is enabled, the Run Once task will be disabled automatically.
@@ -156,6 +187,16 @@ This feature focuses only on updating the firmware of docks that are attached to
 When this policy is Enabled, the Dock Auto Update feature is turned off. Also, if the policy is Not Configured or not present, the Dock Auto Update feature is turned off.
 
 If Dock Auto Update feature needs to be turned on, then set this policy to Disabled. This will cause Commercial Vantage to check for an available Dock firmware update for the specific Dock when it is attached to the system.</string>
+      <string id="AE58B69E416D7B0441DB2250859B51C4">Configure Auto System Update</string>
+      <string id="8225CFB217E8727B16166E43BD51F5EF">This policy setting provides the ability for the Administrator to config the filter of searching updates.
+
+If you enable this policy setting, Commercial Vantage will searching for updates base on this filter.
+
+If you disable this policy setting, Commercial Vantage will searching for all available updates.
+
+Not configured follows the settings of 'Configure System Update'.
+
+This policy affects auto update.</string>
       <string id="247D6178BE8CC3C83409E26C3E1CE0D9">Wifi Security</string>
       <string id="D8388FE08B0F03BE3FEB5670764862BC">Turn off Wifi Security</string>
       <string id="6E73F2B71AD9C7722924A79E92909B21">When this policy is enabled, Wifi Security feature of Commercial Vantage will be turned off</string>
@@ -216,6 +257,12 @@ Not config is default value of this policy and it works as same as disabled.</st
       <presentation id="BD0C70F0CE887CC46496DD7BF81C0B8C">
         <textBox refId="BD0C70F0CE887CC46496DD7BF81C0B8C">
           <label>Repository Path</label>
+          <defaultValue />
+        </textBox>
+      </presentation>
+      <presentation id="2E380F5F44ADD0C3911D0528A5A35CB6">
+        <textBox refId="2E380F5F44ADD0C3911D0528A5A35CB6">
+          <label>Company Name</label>
           <defaultValue />
         </textBox>
       </presentation>
@@ -299,6 +346,29 @@ Not config is default value of this policy and it works as same as disabled.</st
           <label>Defer Time</label>
           <defaultValue>60</defaultValue>
         </textBox>
+      </presentation>
+      <presentation id="4299A9B51C4F0D8CC6ADE9235CACF855">
+        <text>Critical updates:
+</text>
+        <checkBox refId="602015B22CFEA08C53FEC8C3E81356BF">application</checkBox>
+        <checkBox refId="CE7D1526B3D8674705FF75DFF52B4416">driver</checkBox>
+        <checkBox refId="7C75C7AA6FF288235BCA3886FA9A4176">BIOS</checkBox>
+        <checkBox refId="94803C37291A574BB4CAF4DFAE682CC2">firmware</checkBox>
+        <checkBox refId="7326616EB323392D1BB0E6436A4A02AF">others</checkBox>
+        <text>Recommended update:
+</text>
+        <checkBox refId="6564E6607DD79991C0A56F009A4102FA">application</checkBox>
+        <checkBox refId="B78D824B47B0EC632B7EDEF30B63E2D9">driver</checkBox>
+        <checkBox refId="A0DEF98CD96C592582382A3453CB78BA">BIOS</checkBox>
+        <checkBox refId="8E6885D7C10107B5CD98053B7D8B2A6E">firmware</checkBox>
+        <checkBox refId="A45D902F95DDD3B8597B21175A66A804">others</checkBox>
+        <text>Optional update:
+</text>
+        <checkBox refId="46302403B9C32072305518FE20DC6720">application</checkBox>
+        <checkBox refId="FDC13AFD3BA418958D122D78105C2F90">driver</checkBox>
+        <checkBox refId="3297105136FCEC5D3432C0FA2FDB73BB">BIOS</checkBox>
+        <checkBox refId="C62002C924CF75712313AC1CF94525AB">firmware</checkBox>
+        <checkBox refId="9A82A62C3EF3BA2FCC142413A1FAC951">others</checkBox>
       </presentation>
     </presentationTable>
   </resources>

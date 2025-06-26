@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <policyDefinitionResources revision="1.0" schemaVersion="1.0">
   <displayName>
   </displayName>
@@ -641,6 +641,9 @@ USB devices for which device drivers are not installed on the endpoint will be s
       <string id="ProxyType_SOCKSv5">SOCKSv5</string>
       <string id="ProxyType_Secure">Secure</string>
       <string id="ProxyType_Script">Script</string>
+      <string id="IEZone_Trusted">Trusted</string>
+      <string id="IEZone_Intranet">Intranet</string>
+      <string id="IEZone_Trusted_Intranet">Trusted,Intranet</string>
       <string id="Policy_EnableAutoUpdatePolicy">Citrix Workspace Updates</string>
       <string id="Explain_EnableAutoUpdatePolicy">Not Configured – Citrix Workspace Updates is enabled.
 Enabled – Citrix Workspace Updates is enabled with the additional options listed in this dialog.
@@ -891,6 +894,8 @@ Use the "Client Certificate" setting to specify the identifying certificate's th
       <string id="Part_SSL_ClientAuthentication">Client Authentication</string>
       <string id="Part_SSL_ClientCertificate">Client Certificate</string>
       <string id="Policy_ConfigureClientSelectiveTrust">Configure trusted server configuration</string>
+      <string id="Policy_ConfigureClientSelectiveTrust_x86">Configure trusted server configuration for x86 machines</string>
+      <string id="Policy_ConfigureClientSelectiveTrust_x64">Configure trusted server configuration for x64 machines</string>
       <string id="Explain_ConfigureClientSelectiveTrust">Use this policy to control how the client identifies the published application or desktop it is connecting to.  The client will determine a trust level, called a ""trust region"" with a connection.  The trust region will then determine how the client is configured for the connection.  
 
 When this policy is enabled, the client can be forced to perform region identification using the "Enforce trusted server configuration" option.  
@@ -1181,8 +1186,12 @@ Session sharing is controlled by the SessionSharingKey that prevents application
       <string id="Policy_AllowLegacySessionSharing">Allow Legacy Session Sharing</string>
       <string id="Explain_AllowLegacySessionSharing">Allow session sharing for Program Neighborhood sessions</string>
       <string id="Part_AllowLegacySessionSharing_SessionSharing">AllowLegacySessionSharing</string>
-      <string id="Policy_Net6DesktopViewer">Enable .NET 6 Desktop Viewer</string>
-      <string id="Explain_Net6DesktopViewer">This policy controls whether to use .NET 6 Desktop Viewer.</string>
+      <string id="Policy_LegacyDesktopViewer">Enable Legacy Desktop Viewer</string>
+      <string id="Explain_LegacyDesktopViewer">This policy controls whether to use the legacy Desktop Viewer.</string>
+      <string id="Policy_DesktopViewerConnectionStrengthIndicatorNotification">Desktop Viewer Connection Strength Indicator Notification</string>
+      <string id="Explain_DesktopViewerConnectionStrengthIndicatorNotification">This policy controls if notifications appear when connection strength is degraded.</string>
+      <string id="Policy_DesktopViewerToolbarOptions">Desktop Viewer Toolbar Options</string>
+      <string id="Explain_DesktopViewerToolbarOptions">This policy controls which toolbar options to show in Desktop Viewer.</string>
       <string id="Policy_MSISettings">Multi-Stream ICA</string>
       <string id="Explain_MSISettings">Use this policy to configure Multi-Stream ICA settings. This feature is enabled by default.</string>
       <string id="Policy_EnableFTU">EnableFTU</string>
@@ -1614,6 +1623,13 @@ Microsoft Edge WebView2 provides support for authentication mechanisms like Wind
 
 When this policy is disabled, Citrix Workspace app uses Internet Explorer WebView.
 	  </string>
+      <string id="Policy_Enable_AllowSingleSignOnForEdgeWebView">Allow Single Sign-On for Edge WebView</string>
+      <string id="Policy_Enable_AllowSingleSignOnForEdgeWebView_SupportedOn">Citrix Workspace app for Windows 2409 and above.</string>
+      <string id="Explain_Enable_AllowSingleSignOnForEdgeWebView">
+	  When the policy is disabled, single sign-on (SSO) is disabled for devices that are Entra ID-joined or registered. The end user must authenticate in the Workspace app if Entra ID is used as the identity provider.
+	  When the policy is not configured, single sign-on (SSO) is enabled.
+	  By default,policy is enabled.
+	  </string>
       <string id="GlobalAppConfig">Global App Config Service</string>
       <string id="Explain_GlobalAppConfig">Use this policy to manage the Citrix Global App Config Service.</string>
       <string id="Policy_GlobalAppConfigService">Manage Global App Config Service</string>
@@ -1872,11 +1888,16 @@ Sample format to add vendor IDs and product IDs to the exclusion list:
           <label>Client Certificate</label>
         </textBox>
       </presentation>
-      <presentation id="Policy_ConfigureClientSelectiveTrust">
+      <presentation id="Policy_ConfigureClientSelectiveTrust_x86">
         <checkBox refId="Part_EnableClientSelectiveTrust" defaultChecked="true">Enforce trusted server configuration</checkBox>
-        <textBox refId="Part_ConfigureClientSelectiveTrust_IEZone">
-          <label>Windows internet zone</label>
+        <dropdownList refId="Part_ConfigureClientSelectiveTrust_IEZone">Windows internet zone</dropdownList>
+        <textBox refId="Part_ConfigureClientSelectiveTrust_EffectiveAddress">
+          <label>Address</label>
         </textBox>
+      </presentation>
+      <presentation id="Policy_ConfigureClientSelectiveTrust_x64">
+        <checkBox refId="Part_EnableClientSelectiveTrust" defaultChecked="true">Enforce trusted server configuration</checkBox>
+        <dropdownList refId="Part_ConfigureClientSelectiveTrust_IEZone">Windows internet zone</dropdownList>
         <textBox refId="Part_ConfigureClientSelectiveTrust_EffectiveAddress">
           <label>Address</label>
         </textBox>
@@ -2328,7 +2349,18 @@ Sample format to add vendor IDs and product IDs to the exclusion list:
       <presentation id="Policy_AllowLegacySessionSharing">
         <checkBox refId="Part_AllowLegacySessionSharing_SessionSharing" defaultChecked="true">AllowLegacySessionSharing</checkBox>
       </presentation>
-      <presentation id="Policy_Net6DesktopViewer" />
+      <presentation id="Policy_DesktopViewerConnectionStrengthIndicatorNotification">
+        <checkBox refId="Part_DesktopViewerConnectionStrengthIndicatorNotification" defaultChecked="false">Connection Strength Indicator Notification</checkBox>
+      </presentation>
+      <presentation id="Policy_LegacyDesktopViewer" />
+      <presentation id="Policy_DesktopViewerToolbarOptions">
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Usb" defaultChecked="true">USB Devices</checkBox>
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Connection" defaultChecked="true">Connection Strength Indicator</checkBox>
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Lock" defaultChecked="true">Ctrl+Alt+Del (Lock)</checkBox>
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Disconnect" defaultChecked="true">Disconnect</checkBox>
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Fullscreen" defaultChecked="true">Fullscreen</checkBox>
+        <checkBox refId="Part_DesktopViewerToolbarOptions_Preferences" defaultChecked="true">Preferences</checkBox>
+      </presentation>
       <presentation id="EnableICAFileSigning">
         <listBox refId="TrustedCertificates">Trusted Certificates:</listBox>
         <dropdownList refId="Securitypolicy" defaultItem="0">Security policy:</dropdownList>
@@ -2397,6 +2429,8 @@ Sample format to add vendor IDs and product IDs to the exclusion list:
       <presentation id="Policy_StoreAuthenticationTokens">
       </presentation>
       <presentation id="Policy_Enable_EdgeChromium">
+      </presentation>
+      <presentation id="Policy_Enable_AllowSingleSignOnForEdgeWebView">
       </presentation>
       <presentation id="Presentation_GlobalAppConfigService" />
       <presentation id="Presentation_LocalAppDiscovery">

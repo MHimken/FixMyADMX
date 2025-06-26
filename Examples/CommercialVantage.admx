@@ -14,6 +14,12 @@
     <category name="261C3D29FFEB46D46D29941DC7D22786" displayName="$(string.261C3D29FFEB46D46D29941DC7D22786)">
       <parentCategory ref="03E445D7B5956335BEDEF9340AC7E092" />
     </category>
+    <category name="856C8C55266137062827DD27AEDB1FA5" displayName="$(string.856C8C55266137062827DD27AEDB1FA5)">
+      <parentCategory ref="03E445D7B5956335BEDEF9340AC7E092" />
+    </category>
+    <category name="3DF937718C9E5B329933E1B978EF7778" displayName="$(string.3DF937718C9E5B329933E1B978EF7778)">
+      <parentCategory ref="03E445D7B5956335BEDEF9340AC7E092" />
+    </category>
     <category name="8BEB3CE1E181B089EC89D4C4E6A3D448" displayName="$(string.8BEB3CE1E181B089EC89D4C4E6A3D448)">
       <parentCategory ref="03E445D7B5956335BEDEF9340AC7E092" />
     </category>
@@ -30,6 +36,9 @@
       <parentCategory ref="7D8BB8A33C8A8577FC2188C5539DFDBB" />
     </category>
     <category name="4D633640E5CF3443867C0771CE6106B0" displayName="$(string.4D633640E5CF3443867C0771CE6106B0)">
+      <parentCategory ref="7D8BB8A33C8A8577FC2188C5539DFDBB" />
+    </category>
+    <category name="01117C8E37FB5C5F1D126E386D8788DA" displayName="$(string.01117C8E37FB5C5F1D126E386D8788DA)">
       <parentCategory ref="7D8BB8A33C8A8577FC2188C5539DFDBB" />
     </category>
     <category name="8BFC79DE8BB6F9B73316906802BA1CF8" displayName="$(string.8BFC79DE8BB6F9B73316906802BA1CF8)">
@@ -73,8 +82,28 @@
     </category>
   </categories>
   <policies>
-    <policy name="423D78F64EDE5D50939BFF9E369A1FC4" class="Machine" displayName="$(string.0B297BC05A42F20C522B7E7C49F3DA4C)" explainText="$(string.4E37FF4B9B1BE7FB138A9FBD55E9364E)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="AcceptEULAAutomatically">
+    <policy name="423D78F64EDE5D50939BFF9E369A1FC4" class="Machine" displayName="$(string.0B297BC05A42F20C522B7E7C49F3DA4C)" explainText="$(string.5F5905C8BB2F06E52DD9377FD2F89EB8)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="AcceptEULAAutomatically">
       <parentCategory ref="261C3D29FFEB46D46D29941DC7D22786" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="CB15F021F0DF07589CBAE6214CDA5C02" class="Machine" displayName="$(string.E1E39CE58D7F99B6A70B61A8F32E7A49)" explainText="$(string.D181581E9B89345A3BFBC495FBA00442)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="TurnOffMetricsCollection">
+      <parentCategory ref="856C8C55266137062827DD27AEDB1FA5" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="6236A5717DA5B69DED52C56A98ED0614" class="Machine" displayName="$(string.5DD3847B0FEAE23C43E50AAB2C63B57B)" explainText="$(string.B45B58412AD01A8E460C99E4BBA80CEC)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="page.smartcare">
+      <parentCategory ref="3DF937718C9E5B329933E1B978EF7778" />
       <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
       <enabledValue>
         <decimal value="1" />
@@ -173,6 +202,16 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="FEA7860918ABE78B4E663EC380018BFA" class="Machine" displayName="$(string.BA0C56890927B4AAD8674FC9D0B69042)" explainText="$(string.5BDC9574046637DF444A9C0BF87ED908)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="page.adaptiveModes">
+      <parentCategory ref="01117C8E37FB5C5F1D126E386D8788DA" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
     <policy name="C4B62E5E049AD13F859FC0B5EFCBAAB6" class="Machine" displayName="$(string.7E545BC0614659EAE91DA1E4090FAF9B)" explainText="$(string.AC9B0122EC1A9FBC340AE4EB15E8FA6A)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="page.smartAssist">
       <parentCategory ref="8BFC79DE8BB6F9B73316906802BA1CF8" />
       <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
@@ -184,6 +223,16 @@
       </disabledValue>
     </policy>
     <policy name="A30CAD3DBAA23B6415BEF60574689D96" class="Machine" displayName="$(string.95B863C7A675FCD8D26113FEEF9390F1)" explainText="$(string.BDA4A033173928D2715DC5BBD249F984)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="feature.device-settings.audio.microphone-settings">
+      <parentCategory ref="385B0718B3A5821F493B8F1F0424A68D" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="F882C701668DB80709E260BAA562DCC4" class="Machine" displayName="$(string.762B62E71306E25080117D5A0CB106F1)" explainText="$(string.B876E5339683AC9CFDAA04D0A243B1F9)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="feature.device-settings.audio.smart-noise-cancelling">
       <parentCategory ref="385B0718B3A5821F493B8F1F0424A68D" />
       <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
       <enabledValue>
@@ -239,7 +288,7 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
-    <policy name="ADB803E7378E121123D5E08D9A2D0AE3" class="Machine" displayName="$(string.6705E49344F4667086A7CC519EE2BE8B)" explainText="$(string.86D80A02F33F5EE47BD631C87652051C)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="feature.device-settings.power.power-smart-settings">
+    <policy name="453AC4524829A51ADCB398A55E146EBA" class="Machine" displayName="$(string.72262ED0D05B54AC96C642CD8EA99530)" explainText="$(string.DBDAAE7201EAA646049C956B3633DF0F)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="feature.device-settings.power.power-smart-settings">
       <parentCategory ref="E4F5170489B8C677D42DEB4590E140A7" />
       <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
       <enabledValue>
@@ -341,7 +390,24 @@
         <text id="BD0C70F0CE887CC46496DD7BF81C0B8C" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="LocalRepository" required="true" />
       </elements>
     </policy>
-    <policy name="E1181AE4156C9E11CAF88FC6416AE108" class="Machine" displayName="$(string.1BA8F9AFA53BA0102A3C8422D7D21708)" explainText="$(string.994E9BBFA8CCD84D2AFDF381589D54D8)" presentation="$(presentation.E1181AE4156C9E11CAF88FC6416AE108)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="SystemUpdateFilter">
+    <policy name="F840EF719B3473570D4E02FA060EC19A" class="Machine" displayName="$(string.9E369EF6FC873E867D377DDF80ACF1AA)" explainText="$(string.010AA66AD0BC7E9EDC00EEA51269380E)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="ContentMode">
+      <parentCategory ref="162A79B7E43E726881D582DBA5C8B0B7" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="2E380F5F44ADD0C3911D0528A5A35CB6" class="Machine" displayName="$(string.4285A5195081E21E94074C7E74805F1E)" explainText="$(string.1B5FDD1C627A0FC0A7F744D276A5C8E8)" presentation="$(presentation.2E380F5F44ADD0C3911D0528A5A35CB6)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage">
+      <parentCategory ref="162A79B7E43E726881D582DBA5C8B0B7" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <elements>
+        <text id="2E380F5F44ADD0C3911D0528A5A35CB6" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="CompanyName" required="true" />
+      </elements>
+    </policy>
+    <policy name="E1181AE4156C9E11CAF88FC6416AE108" class="Machine" displayName="$(string.1BA8F9AFA53BA0102A3C8422D7D21708)" explainText="$(string.23B154CFAC905E849A84180956F41F0C)" presentation="$(presentation.E1181AE4156C9E11CAF88FC6416AE108)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="SystemUpdateFilter">
       <parentCategory ref="162A79B7E43E726881D582DBA5C8B0B7" />
       <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
       <enabledValue>
@@ -469,6 +535,33 @@
       <disabledValue>
         <decimal value="0" />
       </disabledValue>
+    </policy>
+    <policy name="4299A9B51C4F0D8CC6ADE9235CACF855" class="Machine" displayName="$(string.AE58B69E416D7B0441DB2250859B51C4)" explainText="$(string.8225CFB217E8727B16166E43BD51F5EF)" presentation="$(presentation.4299A9B51C4F0D8CC6ADE9235CACF855)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="AutoSystemUpdateFilter">
+      <parentCategory ref="E4FF6280DA9B32B3629E2DCFE74DCCDB" />
+      <supportedOn ref="73B91784D50BFD64ED39D61C739EC237" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+      <elements>
+        <boolean id="602015B22CFEA08C53FEC8C3E81356BF" valueName="AutoSystemUpdateFilter.critical.application" />
+        <boolean id="CE7D1526B3D8674705FF75DFF52B4416" valueName="AutoSystemUpdateFilter.critical.driver" />
+        <boolean id="7C75C7AA6FF288235BCA3886FA9A4176" valueName="AutoSystemUpdateFilter.critical.BIOS" />
+        <boolean id="94803C37291A574BB4CAF4DFAE682CC2" valueName="AutoSystemUpdateFilter.critical.firmware" />
+        <boolean id="7326616EB323392D1BB0E6436A4A02AF" valueName="AutoSystemUpdateFilter.critical.others" />
+        <boolean id="6564E6607DD79991C0A56F009A4102FA" valueName="AutoSystemUpdateFilter.recommended.application" />
+        <boolean id="B78D824B47B0EC632B7EDEF30B63E2D9" valueName="AutoSystemUpdateFilter.recommended.driver" />
+        <boolean id="A0DEF98CD96C592582382A3453CB78BA" valueName="AutoSystemUpdateFilter.recommended.BIOS" />
+        <boolean id="8E6885D7C10107B5CD98053B7D8B2A6E" valueName="AutoSystemUpdateFilter.recommended.firmware" />
+        <boolean id="A45D902F95DDD3B8597B21175A66A804" valueName="AutoSystemUpdateFilter.recommended.others" />
+        <boolean id="46302403B9C32072305518FE20DC6720" valueName="AutoSystemUpdateFilter.optional.application" />
+        <boolean id="FDC13AFD3BA418958D122D78105C2F90" valueName="AutoSystemUpdateFilter.optional.driver" />
+        <boolean id="3297105136FCEC5D3432C0FA2FDB73BB" valueName="AutoSystemUpdateFilter.optional.BIOS" />
+        <boolean id="C62002C924CF75712313AC1CF94525AB" valueName="AutoSystemUpdateFilter.optional.firmware" />
+        <boolean id="9A82A62C3EF3BA2FCC142413A1FAC951" valueName="AutoSystemUpdateFilter.optional.others" />
+      </elements>
     </policy>
     <policy name="11116BCCD9E515307397B1CE23E74D13" class="Machine" displayName="$(string.D8388FE08B0F03BE3FEB5670764862BC)" explainText="$(string.6E73F2B71AD9C7722924A79E92909B21)" key="SOFTWARE\Policies\Lenovo\Commercial Vantage" valueName="page.wifiSecurity">
       <parentCategory ref="247D6178BE8CC3C83409E26C3E1CE0D9" />
