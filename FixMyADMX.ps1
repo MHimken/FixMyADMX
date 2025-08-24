@@ -224,7 +224,7 @@ function Repair-ADMXWindowsReferences {
     if ($UsingWindowsADMX) {
         Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath has the windows.admx added to its namespace" -Component 'FMAADMXRepairWindowsReferences'
         [string]$RawADMX = Get-Content $script:SaveADMXToWorkingDirectoryPath | Select-String -Pattern 'Windows:'
-        if ($RawADMX -ne "") {
+        if (($null -ne $RawADMX) -and ($RawADMX -ne "")) {
             Write-Log -Message "$script:SaveADMXToWorkingDirectoryPath is actively using a 'Windows:' reference, which needs to be replaced. Consult the blog to find out more about this issue" -Component 'FMAADMXRepairWindowsReferences' -Type 2
             return $false
         } else {

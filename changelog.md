@@ -1,5 +1,10 @@
 # Changes
 
+## August 2025
+
+- Fix: MN-EckeD provided a method to fix [#3](https://github.com/MHimken/FixMyADMX/issues/3)
+- Update: Updated receiver.admx/.adml to 2503.
+
 ## June 2025
 
 - Fix: Paths missing a trailing slash a now properly handled

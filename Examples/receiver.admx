@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<policyDefinitions revision="1.0" schemaVersion="1.0">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitions revision="2503.0" schemaVersion="1.0">
   <policyNamespaces>
     <target prefix="receiver" namespace="receiver.Policies.receiver" />
   </policyNamespaces>
@@ -15,6 +15,7 @@
       <definition name="SUPPORTED_Platform_SmartCardRemovalAction" displayName="$(string.ADMXPolicy_SupportedOn_Explain_SmartCardRemovalAction)" />
       <definition name="SUPPORTED_Platform_AppProtection" displayName="$(string.ADMXPolicy_SupportedOn_Explain_AppProtection)" />
       <definition name="SUPPORTED_Platform_EdgeChromium" displayName="$(string.Policy_Enable_EdgeChromium_SupportedOn)" />
+      <definition name="SUPPORTED_Platform_ShowDisabledShortcuts" displayName="$(string.Policy_ShowDisabledShortcuts_SupportedOn)" />
       <definition name="SUPPORTED_Platform_AllowSingleSignOnForEdgeWebView" displayName="$(string.Policy_Enable_AllowSingleSignOnForEdgeWebView_SupportedOn)" />
     </definitions>
   </supportedOn>
@@ -95,6 +96,20 @@
     </category>
   </categories>
   <policies>
+    <policy name="Policy_Enable_PersistentICA" class="Machine" displayName="$(string.Policy_Enable_PersistentICA)" explainText="$(string.Explain_PersistentICA)" presentation="$(presentation.Policy_Enable_PersistentICA)" key="Software\Policies\Citrix\ICA Client\PersistentICA" valueName="Enabled">
+      <parentCategory ref="ICAClient" />
+      <supportedOn ref="SUPPORTED_NotSpecified" />
+      <enabledValue>
+        <string>true</string>
+      </enabledValue>
+      <disabledValue>
+        <string>false</string>
+      </disabledValue>
+      <elements>
+        <text id="Part_PersistentICA_ConfiguredApp" valueName="ConfiguredApp" />
+        <decimal id="Part_PersistentICA_MaxLaunchRetries" valueName="MaxRetries" minValue="1" maxValue="10" storeAsText="true" />
+      </elements>
+    </policy>
     <policy name="Policy_EnableICAClient" class="Machine" displayName="$(string.Policy_EnableICAClient)" explainText="$(string.Explain_EnableICAClient)" presentation="$(presentation.Policy_EnableICAClient)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions">
       <parentCategory ref="ICAClient" />
       <supportedOn ref="SUPPORTED_NotSpecified" />
@@ -162,6 +177,16 @@
         </enum>
         <text id="Part_SSL_SSLProxyHostLockdown" valueName="SSLProxyHost" />
         <enum id="Part_SSL_SSLProtocolLockdown" valueName="SecureChannelProtocol">
+          <item displayName="$(string.tls_13)">
+            <value>
+              <string>TLS13</string>
+            </value>
+          </item>
+          <item displayName="$(string.tls_12_13)">
+            <value>
+              <string>TLS12_TLS13</string>
+            </value>
+          </item>
           <item displayName="$(string.unknown_1203)">
             <value>
               <string>TLS12</string>
@@ -172,9 +197,9 @@
               <string>TLS11_TLS12</string>
             </value>
           </item>
-          <item displayName="$(string.unknown_1207)">
+          <item displayName="$(string.tls_10_11_12)">
             <value>
-              <string>TLS11_TLS12_TLS13</string>
+              <string>TLS10_TLS11_TLS12</string>
             </value>
           </item>
         </enum>
@@ -597,6 +622,16 @@
     </policy>
     <policy name="Policy_EnableRCG" class="Machine" displayName="$(string.Policy_EnableRCG)" explainText="$(string.Explain_EnableRCG)" presentation="$(presentation.Policy_EnableRCG)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions\Lockdown\Logon\Local Credentials" valueName="EnableEnhancedDomainPassthrough">
       <parentCategory ref="Authentication" />
+      <supportedOn ref="SUPPORTED_Platform" />
+      <enabledValue>
+        <string>true</string>
+      </enabledValue>
+      <disabledValue>
+        <string>false</string>
+      </disabledValue>
+    </policy>
+    <policy name="Policy_DisableAllFTAStubCreation" class="Machine" displayName="$(string.Policy_DisableAllFTAStubCreation)" explainText="$(string.Explain_DisableAllFTAStubCreation)" presentation="$(presentation.Policy_DisableAllFTAStubCreation)" key="SOFTWARE\Policies\Citrix\Dazzle" valueName="DisableDefaultFTABinaryCreation">
+      <parentCategory ref="SelfService" />
       <supportedOn ref="SUPPORTED_Platform" />
       <enabledValue>
         <string>true</string>
@@ -2711,20 +2746,6 @@
         <string>False</string>
       </disabledValue>
     </policy>
-    <policy name="Policy_DesktopViewerConnectionStrengthIndicatorNotification" class="Machine" displayName="$(string.Policy_DesktopViewerConnectionStrengthIndicatorNotification)" explainText="$(string.Explain_DesktopViewerConnectionStrengthIndicatorNotification)" presentation="$(presentation.Policy_DesktopViewerConnectionStrengthIndicatorNotification)" key="Software\Policies\Citrix\ICA Client\DesktopViewer">
-      <parentCategory ref="ClientEngine" />
-      <supportedOn ref="SUPPORTED_Platform" />
-      <elements>
-        <boolean id="Part_DesktopViewerConnectionStrengthIndicatorNotification" valueName="EnableConnectionStrengthIndicatorNotification">
-          <trueValue>
-            <string>true</string>
-          </trueValue>
-          <falseValue>
-            <string>false</string>
-          </falseValue>
-        </boolean>
-      </elements>
-    </policy>
     <policy name="Policy_DesktopViewerToolbarOptions_Machine" class="Machine" displayName="$(string.Policy_DesktopViewerToolbarOptions)" explainText="$(string.Explain_DesktopViewerToolbarOptions)" presentation="$(presentation.Policy_DesktopViewerToolbarOptions)" key="Software\Policies\Citrix\ICA Client\Toolbar">
       <parentCategory ref="ClientEngine" />
       <supportedOn ref="SUPPORTED_Platform" />
@@ -2762,6 +2783,14 @@
           </falseValue>
         </boolean>
         <boolean id="Part_DesktopViewerToolbarOptions_Fullscreen" valueName="Fullscreen">
+          <trueValue>
+            <string>true</string>
+          </trueValue>
+          <falseValue>
+            <string>false</string>
+          </falseValue>
+        </boolean>
+        <boolean id="Part_DesktopViewerToolbarOptions_MultiMonitor" valueName="MultiMonitor">
           <trueValue>
             <string>true</string>
           </trueValue>
@@ -2896,6 +2925,26 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
+    <policy name="Policy_EnableDesktopLock_ForAllStandardUsers" class="Machine" displayName="$(string.Policy_EnableDesktopLockForAllStandardUsers)" explainText="$(string.Explain_EnableDesktopLockForAllStandardUsers)" presentation="$(presentation.Policy_EnableDesktopLockForAllStandardUsers)" key="SOFTWARE\Policies\Citrix" valueName="EnableDesktopLockForAllStandardUsers">
+      <parentCategory ref="UserExperience" />
+      <supportedOn ref="SUPPORTED_Platform" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="Policy_EnableDesktopLock_ForUser" class="User" displayName="$(string.Policy_EnableDesktopLockForUser)" explainText="$(string.Explain_EnableDesktopLockForUser)" presentation="$(presentation.Policy_EnableDesktopLockForUser)" key="SOFTWARE\Policies\Citrix" valueName="EnableDesktopLockForUser">
+      <parentCategory ref="UserExperience" />
+      <supportedOn ref="SUPPORTED_Platform" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
     <policy name="Policy_EnableCwaToCsaSso_Machine" class="Machine" displayName="$(string.Policy_EnableCwaToCsaSso)" explainText="$(string.Explain_EnableCwaToCsaSso)" presentation="$(presentation.Policy_EnableCwaToCsaSso)" key="SOFTWARE\Policies\Citrix" valueName="EnableCwaToCsaSso">
       <parentCategory ref="Authentication" />
       <supportedOn ref="SUPPORTED_Platform" />
@@ -2908,6 +2957,16 @@
     </policy>
     <policy name="Policy_EnableCwaToCsaSso_User" class="User" displayName="$(string.Policy_EnableCwaToCsaSso)" explainText="$(string.Explain_EnableCwaToCsaSso)" presentation="$(presentation.Policy_EnableCwaToCsaSso)" key="SOFTWARE\Policies\Citrix" valueName="EnableCwaToCsaSso">
       <parentCategory ref="Authentication" />
+      <supportedOn ref="SUPPORTED_Platform" />
+      <enabledValue>
+        <decimal value="1" />
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="Policy_AllowDesktopLockOnMachine" class="Machine" displayName="$(string.Policy_AllowDesktopLockOnMachine)" explainText="$(string.Explain_AllowDesktopLockOnMachine)" presentation="$(presentation.Policy_AllowDesktopLockOnMachine)" key="SOFTWARE\Policies\Citrix" valueName="AllowDesktopLockOnMachine">
+      <parentCategory ref="UserExperience" />
       <supportedOn ref="SUPPORTED_Platform" />
       <enabledValue>
         <decimal value="1" />
@@ -3466,168 +3525,6 @@
             <string>False</string>
           </falseValue>
         </boolean>
-        <enum id="Part_EnableAutoUpdatePolicy_RemindMeLater" valueName="DeferUpdate-Count">
-          <item displayName="$(string.MinusOne)">
-            <value>
-              <string>-1</string>
-            </value>
-          </item>
-          <item displayName="$(string.Zero)">
-            <value>
-              <string>0</string>
-            </value>
-          </item>
-          <item displayName="$(string.One)">
-            <value>
-              <string>1</string>
-            </value>
-          </item>
-          <item displayName="$(string.Two)">
-            <value>
-              <string>2</string>
-            </value>
-          </item>
-          <item displayName="$(string.Three)">
-            <value>
-              <string>3</string>
-            </value>
-          </item>
-          <item displayName="$(string.Four)">
-            <value>
-              <string>4</string>
-            </value>
-          </item>
-          <item displayName="$(string.Five)">
-            <value>
-              <string>5</string>
-            </value>
-          </item>
-          <item displayName="$(string.Six)">
-            <value>
-              <string>6</string>
-            </value>
-          </item>
-          <item displayName="$(string.Seven)">
-            <value>
-              <string>7</string>
-            </value>
-          </item>
-          <item displayName="$(string.Eight)">
-            <value>
-              <string>8</string>
-            </value>
-          </item>
-          <item displayName="$(string.Nine)">
-            <value>
-              <string>9</string>
-            </value>
-          </item>
-          <item displayName="$(string.Ten)">
-            <value>
-              <string>10</string>
-            </value>
-          </item>
-          <item displayName="$(string.Eleven)">
-            <value>
-              <string>11</string>
-            </value>
-          </item>
-          <item displayName="$(string.Twelve)">
-            <value>
-              <string>12</string>
-            </value>
-          </item>
-          <item displayName="$(string.Thirteen)">
-            <value>
-              <string>13</string>
-            </value>
-          </item>
-          <item displayName="$(string.Fourteen)">
-            <value>
-              <string>14</string>
-            </value>
-          </item>
-          <item displayName="$(string.Fifteen)">
-            <value>
-              <string>15</string>
-            </value>
-          </item>
-          <item displayName="$(string.Sixteen)">
-            <value>
-              <string>16</string>
-            </value>
-          </item>
-          <item displayName="$(string.Seventeen)">
-            <value>
-              <string>17</string>
-            </value>
-          </item>
-          <item displayName="$(string.Eighteen)">
-            <value>
-              <string>18</string>
-            </value>
-          </item>
-          <item displayName="$(string.Nineteen)">
-            <value>
-              <string>19</string>
-            </value>
-          </item>
-          <item displayName="$(string.Twenty)">
-            <value>
-              <string>20</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyOne)">
-            <value>
-              <string>21</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyTwo)">
-            <value>
-              <string>22</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyThree)">
-            <value>
-              <string>23</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyFour)">
-            <value>
-              <string>24</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyFive)">
-            <value>
-              <string>25</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentySix)">
-            <value>
-              <string>26</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentySeven)">
-            <value>
-              <string>27</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyEight)">
-            <value>
-              <string>28</string>
-            </value>
-          </item>
-          <item displayName="$(string.TwentyNine)">
-            <value>
-              <string>29</string>
-            </value>
-          </item>
-          <item displayName="$(string.Thirty)">
-            <value>
-              <string>30</string>
-            </value>
-          </item>
-        </enum>
       </elements>
     </policy>
     <policy name="Policy_CheckAutoUpdatePolicy" class="Machine" displayName="$(string.Policy_CheckAutoUpdatePolicy)" explainText="$(string.Explain_CheckAutoUpdatePolicy)" presentation="$(presentation.Policy_CheckAutoUpdatePolicy)" key="Software\Policies\Citrix\ICA Client\AutoUpdate">
@@ -3651,6 +3548,26 @@
             </value>
           </item>
         </enum>
+      </elements>
+    </policy>
+    <!-- Implementaion of AutoUpdate Scheduler Policy Policy. -->
+    <policy name="Policy_AutoUpdateSchedulerPolicy" class="Machine" displayName="$(string.Policy_AutoUpdateSchedulerPolicy)" explainText="$(string.Explain_AutoUpdateSchedulerPolicy)" presentation="$(presentation.Policy_AutoUpdateSchedulerPolicy)" key="Software\Policies\Citrix\ICA Client\AutoUpdate">
+      <parentCategory ref="AutoUpdate" />
+      <supportedOn ref="SUPPORTED_NotSpecified" />
+      <elements>
+        <text id="Part_StartTime" valueName="startTime" value="00:00" />
+        <text id="Part_EndTime" valueName="endTime" value="00:00" />
+        <text id="Part_DeferCount" valueName="deferCount" value="00" />
+      </elements>
+    </policy>
+    <policy name="Policy_AutoUpdateVersionControlPolicy" class="Machine" displayName="$(string.Policy_AutoUpdateVersionControlPolicy)" explainText="$(string.Explain_AutoUpdateVersionControlPolicy)" presentation="$(presentation.Policy_AutoUpdateVersionControlPolicy)" key="Software\Policies\Citrix\ICA Client\AutoUpdate\1CDF566D-B2C7-47CA-802F-6283C862E1D6">
+      <parentCategory ref="AutoUpdate" />
+      <supportedOn ref="SUPPORTED_NotSpecified" />
+      <elements>
+        <text id="Part_CWA_Version" valueName="versionControl" />
+        <boolean id="Part_UpgradeToLatest" valueName="UpgradeToLatest" />
+        <text id="Part_CustomStartDate" valueName="startDate" />
+        <decimal id="Part_DeliveryPeriod" storeAsText="true" valueName="deliveryPeriod" minValue="0" maxValue="30" />
       </elements>
     </policy>
     <policy name="Policy_EngineErrMsg_1" class="User" displayName="$(string.Policy_EngineErrMsg)" explainText="$(string.Explain_EnableEngineErrMsg)" presentation="$(presentation.Policy_EngineErrMsg)" key="Software\Policies\Citrix\ICA Client\Engine" valueName="Enable_EngineErrMsg">
@@ -3709,6 +3626,16 @@
         </enum>
         <text id="Part_SSL_SSLProxyHostLockdown" valueName="SSLProxyHost" />
         <enum id="Part_SSL_SSLProtocolLockdown" valueName="SecureChannelProtocol">
+          <item displayName="$(string.tls_13)">
+            <value>
+              <string>TLS13</string>
+            </value>
+          </item>
+          <item displayName="$(string.tls_12_13)">
+            <value>
+              <string>TLS12_TLS13</string>
+            </value>
+          </item>
           <item displayName="$(string.unknown_1203)">
             <value>
               <string>TLS12</string>
@@ -3719,9 +3646,9 @@
               <string>TLS11_TLS12</string>
             </value>
           </item>
-          <item displayName="$(string.unknown_1207)">
+          <item displayName="$(string.tls_10_11_12)">
             <value>
-              <string>TLS11_TLS12_TLS13</string>
+              <string>TLS10_TLS11_TLS12</string>
             </value>
           </item>
         </enum>
@@ -6099,20 +6026,6 @@
         <string>False</string>
       </disabledValue>
     </policy>
-    <policy name="Policy_DesktopViewerConnectionStrengthIndicatorNotification_User" class="User" displayName="$(string.Policy_DesktopViewerConnectionStrengthIndicatorNotification)" explainText="$(string.Explain_DesktopViewerConnectionStrengthIndicatorNotification)" presentation="$(presentation.Policy_DesktopViewerConnectionStrengthIndicatorNotification)" key="Software\Policies\Citrix\ICA Client\DesktopViewer">
-      <parentCategory ref="ClientEngine" />
-      <supportedOn ref="SUPPORTED_Platform" />
-      <elements>
-        <boolean id="Part_DesktopViewerConnectionStrengthIndicatorNotification" valueName="EnableConnectionStrengthIndicatorNotification">
-          <trueValue>
-            <string>true</string>
-          </trueValue>
-          <falseValue>
-            <string>false</string>
-          </falseValue>
-        </boolean>
-      </elements>
-    </policy>
     <policy name="Policy_DesktopViewerToolbarOptions_User" class="User" displayName="$(string.Policy_DesktopViewerToolbarOptions)" explainText="$(string.Explain_DesktopViewerToolbarOptions)" presentation="$(presentation.Policy_DesktopViewerToolbarOptions)" key="Software\Policies\Citrix\ICA Client\Toolbar">
       <parentCategory ref="ClientEngine" />
       <supportedOn ref="SUPPORTED_Platform" />
@@ -6150,6 +6063,14 @@
           </falseValue>
         </boolean>
         <boolean id="Part_DesktopViewerToolbarOptions_Fullscreen" valueName="Fullscreen">
+          <trueValue>
+            <string>true</string>
+          </trueValue>
+          <falseValue>
+            <string>false</string>
+          </falseValue>
+        </boolean>
+        <boolean id="Part_DesktopViewerToolbarOptions_MultiMonitor" valueName="MultiMonitor">
           <trueValue>
             <string>true</string>
           </trueValue>
@@ -6706,6 +6627,16 @@
         <string>false</string>
       </disabledValue>
     </policy>
+    <policy name="Policy_ShowDisabledShortcuts" class="Machine" displayName="$(string.Policy_ShowDisabledShortcuts)" explainText="$(string.Explain_ShowDisabledShortcuts)" presentation="$(presentation.Policy_ShowDisabledShortcuts)" key="SOFTWARE\Policies\Citrix\Dazzle" valueName="showDisabledShortcuts">
+      <parentCategory ref="SelfService" />
+      <supportedOn ref="SUPPORTED_Platform_ShowDisabledShortcuts" />
+      <enabledValue>
+        <string>true</string>
+      </enabledValue>
+      <disabledValue>
+        <string>false</string>
+      </disabledValue>
+    </policy>
     <policy name="Policy_GlobalAppConfigService" class="Machine" displayName="$(string.Policy_GlobalAppConfigService)" explainText="$(string.Explain_GlobalAppConfigService)" presentation="$(presentation.Presentation_GlobalAppConfigService)" key="Software\Policies\Citrix\GlobalAppConfig">
       <parentCategory ref="GlobalAppConfig" />
       <supportedOn ref="SUPPORTED_Platform" />
@@ -6828,6 +6759,16 @@
       </enabledValue>
       <disabledValue>
         <decimal value="0" />
+      </disabledValue>
+    </policy>
+    <policy name="Policy_ScreenCaptureNotification" class="Machine" displayName="$(string.Policy_ScreenCaptureNotification)" explainText="$(string.Explain_ScreenCaptureNotification)" presentation="$(presentation.Policy_ScreenCaptureNotification)" key="Software\Policies\Citrix\AppProtection" valueName="ScreenCaptureNotification">
+      <parentCategory ref="AppProtection" />
+      <supportedOn ref="SUPPORTED_Platform" />
+      <enabledValue>
+        <string>Enabled</string>
+      </enabledValue>
+      <disabledValue>
+        <string>Disabled</string>
       </disabledValue>
     </policy>
   </policies>
