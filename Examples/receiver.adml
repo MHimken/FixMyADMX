@@ -647,9 +647,9 @@ USB devices for which device drivers are not installed on the endpoint will be s
       <string id="IEZone_Intranet">Intranet</string>
       <string id="IEZone_Trusted_Intranet">Trusted,Intranet</string>
       <string id="Policy_EnableAutoUpdatePolicy">Citrix Workspace Updates</string>
-      <string id="Explain_EnableAutoUpdatePolicy">Not Configured â€“ Citrix Workspace Updates is enabled.
-Enabled â€“ Citrix Workspace Updates is enabled with the additional options listed in this dialog.
-Disabled â€“ Citrix Workspace Updates option is hidden from the Advanced Preferences sheet and you will not receive any update notifications.
+      <string id="Explain_EnableAutoUpdatePolicy">Not Configured – Citrix Workspace Updates is enabled.
+Enabled – Citrix Workspace Updates is enabled with the additional options listed in this dialog.
+Disabled – Citrix Workspace Updates option is hidden from the Advanced Preferences sheet and you will not receive any update notifications.
 
 Enable Citrix Workspace Update Policy:
 	Auto = Citrix Workspace checks for updates automatically. 
@@ -734,6 +734,8 @@ Preferred Start Date  - 2024-11-27
       <string id="Explain_RealTimeTransport">Real-time transport</string>
       <string id="RealTimeTransportThroughGateway">Real-time transport through NetScaler Gateway</string>
       <string id="Explain_RealTimeTransportThroughGateway">Real-time transport through NetScaler Gateway</string>
+      <string id="SecurityPreferences">Security preferences</string>
+      <string id="Explain_SecurityPreferences">These policies control security aspects for citrix workspace.</string>
       <string id="Policy_EnableICAClient">Allow client connections</string>
       <string id="Explain_EnableICAClient">Use this policy to enable or completely disable connections from the Citrix Workspace app.  
 
@@ -745,7 +747,7 @@ When the policy is disabled, the client will not allow connections to any server
 
 
 Troubleshooting:
-If a connection is refused because the client is not enabled, the error message "&lt;Server&gt; ERROR:  Cannot connect to the Citrix XenApp server.  The Server (â€¦) is not trusted for ICA connections.  Connections to the (All Regions) Region are not allowed by lockdown settings.  Please contact your administrator." appears.  
+If a connection is refused because the client is not enabled, the error message "&lt;Server&gt; ERROR:  Cannot connect to the Citrix XenApp server.  The Server (…) is not trusted for ICA connections.  Connections to the (All Regions) Region are not allowed by lockdown settings.  Please contact your administrator." appears.  
 
 If the client does not allow a connection because the version number is too low, the error message "Error number 2321:  ICA Client Configuration Manager:  The ICA Client version is too low to run using the installed configuration data." appears.</string>
       <string id="Part_EnableICAClient_Enable">Enable client</string>
@@ -890,7 +892,7 @@ Note: The TLS_RSA_* cipher suites can be disabled using the Deprecated cipher su
 
 The Certificate Revocation Check is used to improve the cryptographic authentication of the Citrix server and improves the overall security of the TLS connections between a client and a server. 
 Note: Certificate Revocation Check is valid only when SP800-52 Security Compliance mode is set.
-When you enable this setting, the client checks whether or not the serverâ€™s certificate is revoked. There are several levels to checking certificate revocation list.  For example, the client can be configured to check only its local certificate list, or to check the local and network certificate lists. In addition, certificate checking can be configured to allow users to log on only if all Certificate Revocation lists are verified.
+When you enable this setting, the client checks whether or not the server’s certificate is revoked. There are several levels to checking certificate revocation list.  For example, the client can be configured to check only its local certificate list, or to check the local and network certificate lists. In addition, certificate checking can be configured to allow users to log on only if all Certificate Revocation lists are verified.
 Certificate Revocation Check is an advanced feature supported by some certificate issuers. It allows an administrator to revoke security certificates (invalidated before their expiry date) in the case of compromise of the certificate private key.
 Applicable values for this setting are:
 
@@ -1001,7 +1003,7 @@ When this policy is enabled, the client can be prevented from using the current 
 
 The client imposes certain restrictions specifying when pass-through authentication can occur (for details, see Citrix eDocs at http://support.citrix.com/proddocs/).  If these restrictions are too strict for your environment, select the "Allow pass-through authentication for all ICA connections" check box to bypass the pass-through authentication restrictions. 
 
-When run in a Novell Directory Server environment, selecting the "Use Novell Directory Server credentials" check box requests that the client uses the userâ€™s NDS credentials.  
+When run in a Novell Directory Server environment, selecting the "Use Novell Directory Server credentials" check box requests that the client uses the user’s NDS credentials.  
 
 
 Troubleshooting:
@@ -1034,7 +1036,7 @@ When this policy is disabled, the client prevents the server from accessing or p
       <string id="Policy_LocalPort">Client hardware access</string>
       <string id="Explain_LocalPort">Use this policy to specify maximum number of serial ports supported by the client platform. 
 
-Also, use this policy to enable and restrict the remote application or desktop's access to the clientâ€™s serial, USB, and parallel ports. This allows the server to use locally attached hardware. 
+Also, use this policy to enable and restrict the remote application or desktop's access to the client’s serial, USB, and parallel ports. This allows the server to use locally attached hardware. 
 
 
 Troubleshooting:
@@ -1311,8 +1313,8 @@ It blocks session launch from any other untrusted processes and disables direct 
       <string id="Explain_EnableNPS">The Net Promoters Score (NPS) helps you to rate and provide feedback on your experience with Citrix Workspace for Windows (Store). This feedback service aims to improve Citrix Workspace for Windows (Store). The rating and feedback help to provide a better user experience. By default this feature is enabled.
 Note: If you select 4 or 5 as the rating, you are redirected to rate the Citrix Workspace app in the Microsoft Store. If you select 3 or lower, you are redirected to a feedback form where you can provide more details on your rating.
 Options:
-1. Enabled â€“ The NPS dialog appears on every sixth successful connection.
-2. Disabled â€“ The NPS dialog does not appear.
+1. Enabled – The NPS dialog appears on every sixth successful connection.
+2. Disabled – The NPS dialog does not appear.
 </string>
       <string id="Explain_Vprefer">You can now control whether the remote Citrix Workspace app launches the instance of an application installed on first hop server/desktop (if available) in preference to launching a remote application. 
 
@@ -1358,7 +1360,7 @@ This policy is applicable only to 64 bit OS. To check the OS bit type for Window
 
 To be able to enable this policy, ensure that the Smart Card Removal option is set on WI XenApp Services. Refer to XenApp documentation for the procedure on setting Smart Card Removal on XenApp. When the policy is Enabled, the user will continue to be logged in to the Citrix Workspace despite removing the smart card from the client. The user, however, will be logged off from the XenApp session.
 
-When the Policy is disabled, Userâ€™s XenApp session will always be disconnected if the Smart card is removed from Client device and Smart Card removal on the WI XenApp Services does not have any effect. 
+When the Policy is disabled, User’s XenApp session will always be disconnected if the Smart card is removed from Client device and Smart Card removal on the WI XenApp Services does not have any effect. 
 </string>
       <string id="Explain_HideSettings">This policy allows you to manage application shortcuts on desktop and startup along with workspace settings via UI. End user needs control over how the apps are spread out in the start menu. The UI provides an option to place the shortcuts in a start menu folder chosen by the user. The same control is also given for desktop shortcuts. Also provides an UI for managing workspace control settings. By doing this, we uplift the usability attribute of windows Citrix Workspace app.
 
@@ -1431,7 +1433,7 @@ https://sales.mycompany.com/Citrix/Store/discovery
       <string id="Fast_Connect_API_Support">Fast Connect API Support</string>
       <string id="Explain_FastConnect">These policies control Fast Connect API support</string>
       <string id="Policy_FastConnectAPI_Support">Manage FastConnectAPI Support</string>
-      <string id="Explain_FastConnectAPI_Support">Fast Connect API facilitates user switching by providing an API to quickly change a userâ€™s identity in Citrix Workspace.  
+      <string id="Explain_FastConnectAPI_Support">Fast Connect API facilitates user switching by providing an API to quickly change a user’s identity in Citrix Workspace.  
 
 -Enable Fast Connect API:  This options enables fast user switching by providing an API to change new user
 
@@ -1589,20 +1591,20 @@ When Disabled browser cookies and resources are not stored.
 
 This feature provides you with the following options:
 
-    â€¢ Allow dynamic sync -  Synchronizes the client keyboard layout to the server when you make any changes. When selected, this option also enables the client IME for East Asian languages.
+    • Allow dynamic sync -  Synchronizes the client keyboard layout to the server when you make any changes. When selected, this option also enables the client IME for East Asian languages.
       Selecting Yes for this option overrides the following two options.
 		
-    â€¢ Sync only once â€“ when session starts â€“ Synchronizes the client keyboard layout to the server when the session launches. Any changes you make to the client keyboard layout during the session do not take effect immediately. To apply the changes, log off and log back on.
+    • Sync only once – when session starts – Synchronizes the client keyboard layout to the server when the session launches. Any changes you make to the client keyboard layout during the session do not take effect immediately. To apply the changes, log off and log back on.
 	
-    â€¢ Donâ€™t sync - Indicates that the client uses the keyboard layout present on the server.
+    • Don’t sync - Indicates that the client uses the keyboard layout present on the server.
 
 This policy is not configured by default. When you disable this policy, the client keyboard layout is synchronized to server only when the session is launched.
 	  </string>
       <string id="yes_always_sync_keyboard_layout">Yes</string>
       <string id="no_always_sync_keyboard_layout">No</string>
-      <string id="not_sync_keyboard_layout_once">Donâ€™t sync</string>
+      <string id="not_sync_keyboard_layout_once">Don’t sync</string>
       <string id="sync_specific_keyboard_layout_once">Sync specific keyboard layout only once when the session is launched</string>
-      <string id="sync_current_keyboard_layout_once">Sync only once â€“ when session starts</string>
+      <string id="sync_current_keyboard_layout_once">Sync only once – when session starts</string>
       <string id="no_hide_language_bar">No, hide the language bar</string>
       <string id="Policy_IME_Settings">Language bar</string>
       <string id="Explain_IME_Settings">Select the required option to display the language bar in a session.  The language bar displays the preferred input language in a session.
@@ -1618,7 +1620,7 @@ This policy is not configured by default. When you disable this policy, the lang
 
 -Enable Anti-ScreenCapture: Enabling this option will prevent user from taking screenshots and sharing screen.
 
-Note: This policy doesnâ€™t apply to your virtual app and web/SaaS app sessions.
+Note: This policy doesn’t apply to your virtual app and web/SaaS app sessions.
 
 IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect.
 	  </string>
@@ -1631,12 +1633,12 @@ IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect
 
 -Enable Anti-ScreenCapture: Enabling this option will prevent user from taking screenshots and sharing screen.
 
-Note: This policy doesnâ€™t apply to your virtual app and web/SaaS app sessions.
+Note: This policy doesn’t apply to your virtual app and web/SaaS app sessions.
 
 IMPORTANT: Citrix Workspace App needs to be restarted for changes to take effect.
 	  </string>
       <string id="Policy_StoreAuthenticationTokens">Store authentication tokens</string>
-      <string id="Explain_StoreAuthenticationTokens">Use this policy to store authentication tokens. Authentication tokens are encrypted and stored on the disk so that you donâ€™t need to reenter the credentials in case of a system reboot or when Citrix Workspace App is restarted.
+      <string id="Explain_StoreAuthenticationTokens">Use this policy to store authentication tokens. Authentication tokens are encrypted and stored on the disk so that you don’t need to reenter the credentials in case of a system reboot or when Citrix Workspace App is restarted.
 
 Enabled or Not Configured indicates that the authentication tokens are stored. This is the default option.
 
@@ -1672,6 +1674,12 @@ When this policy is enabled then on closing or during launch failure of session 
 
 In case of launch failure, maximum number of retries will be based on the configured value in the policy.
 </string>
+      <string id="Policy_Enable_SignOutOnSessionDisconnect">Log off user on session disconnect</string>
+      <string id="Explain_SignOutOnSessionDisconnect">Log off user on session disconnect.
+When enabled, users are automatically logged off from Citrix Workspace app when they disconnect from their session.
+
+In case of multiple sessions, after all the sessions disconnect, user should be logged off.
+    </string>
       <string id="Policy_ShowDisabledShortcuts">Show Disabled Shortcut</string>
       <string id="Policy_ShowDisabledShortcuts_SupportedOn">Citrix Workspace app for Windows 2411 and above.</string>
       <string id="Explain_ShowDisabledShortcuts">When enabled, show disabled app and desktop shortcuts to the end user.
@@ -1685,6 +1693,12 @@ When you set this policy to Disabled, the settings from Citrix Global App Config
 
 When you set this policy to Enabled, the settings from Citrix Global App Config Service are recognized as a configuration method in Citrix Workspace app.
 	  </string>
+      <string id="Policy_GACSDiscoveryRegion">GACS Discovery Region</string>
+      <string id="Policy_GACSDiscoveryRegion_SupportedOn">Citrix Workspace app for Windows 2507 and above.</string>
+      <string id="Explain_GACSDiscoveryRegion">Select the region from which Citrix Workspace app retrieves discovery endpoints from the Citrix Global App Config Service. If US Gov is selected, the discovery endpoint comes from the U.S. region. If Default is selected, the discovery endpoints are retrieved from the default global endpoint.
+	  </string>
+      <string id="DefaultGACSDiscovery">Default</string>
+      <string id="USGOV">US Gov</string>
       <string id="Policy_LocalAppDiscovery">Local app discovery</string>
       <string id="Explain_LocalAppDiscovery">This policy helps integrate locally installed Windows operating system apps with Citrix Workspace app.
 
@@ -1845,7 +1859,11 @@ Sample format to add vendor IDs and product IDs to the exclusion list:
       <string id="Policy_BlockDoubleHopLaunch">Block DoubleHop Launch</string>
       <string id="Explain_BlockDoubleHopLaunch">If Enabled, Virtual Apps and Desktops configured with App Protection policies cannot be launched from within a Virtual Desktop.</string>
       <string id="Policy_ScreenCaptureNotification">Screen Capture Notification</string>
-      <string id="Explain_ScreenCaptureNotification">If disabled, screen capture notifications will not appear when a tool tries to capture/record a protected window</string>
+      <string id="Explain_ScreenCaptureNotification">
+     If "Disabled", screen capture notifications will not appear when a tool tries to capture/record a protected window.
+
+     If "Enabled" or "Not configured", screen capture notifications will appear when a tool tries to capture/record a protected window.
+     </string>
       <string id="POL_CONFIGURE_LAN_PROXY_MANUALLY_Explain">This should explain 'POL_CONFIGURE_LAN_PROXY_MANUALLY', but it was missing from the ADMX and ADML. Find this element by using 'POL_CONFIGURE_LAN_PROXY_MANUALLY_Explain' in the ADML and replace it as needed</string>
       <string id="POL_CONFIGURE_LAN_PROXY_DLL_Explain">This should explain 'POL_CONFIGURE_LAN_PROXY_DLL', but it was missing from the ADMX and ADML. Find this element by using 'POL_CONFIGURE_LAN_PROXY_DLL_Explain' in the ADML and replace it as needed</string>
     </stringTable>
@@ -2505,11 +2523,16 @@ Sample format to add vendor IDs and product IDs to the exclusion list:
         </textBox>
         <decimalTextBox refId="Part_PersistentICA_MaxLaunchRetries" defaultValue="5">Max Launch Retries</decimalTextBox>
       </presentation>
+      <presentation id="Policy_SignOutOnSessionDisconnect">
+      </presentation>
       <presentation id="Policy_Enable_EdgeChromium">
       </presentation>
       <presentation id="Policy_Enable_AllowSingleSignOnForEdgeWebView">
       </presentation>
       <presentation id="Presentation_GlobalAppConfigService" />
+      <presentation id="Policy_GACSDiscoveryRegion">
+        <dropdownList refId="refid_GACSDiscoveryRegion" defaultItem="0">App config service discovery region for Citrix Workspace</dropdownList>
+      </presentation>
       <presentation id="Presentation_LocalAppDiscovery">
         <checkBox refId="EnableLocalAppDiscovery_Value" defaultChecked="true">Enable local app discovery</checkBox>
         <multiTextBox refId="LocalAppWhitelist_Value">List of whitelisted local apps:</multiTextBox>

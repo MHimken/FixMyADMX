@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<policyDefinitions revision="2503.0" schemaVersion="1.0">
+<policyDefinitions revision="2507.1" schemaVersion="1.0">
   <policyNamespaces>
     <target prefix="receiver" namespace="receiver.Policies.receiver" />
   </policyNamespaces>
@@ -17,10 +17,11 @@
       <definition name="SUPPORTED_Platform_EdgeChromium" displayName="$(string.Policy_Enable_EdgeChromium_SupportedOn)" />
       <definition name="SUPPORTED_Platform_ShowDisabledShortcuts" displayName="$(string.Policy_ShowDisabledShortcuts_SupportedOn)" />
       <definition name="SUPPORTED_Platform_AllowSingleSignOnForEdgeWebView" displayName="$(string.Policy_Enable_AllowSingleSignOnForEdgeWebView_SupportedOn)" />
+      <definition name="SUPPORTED_Platform_GACSDiscoveryRegion" displayName="$(string.Policy_GACSDiscoveryRegion_SupportedOn)" />
     </definitions>
   </supportedOn>
   <categories>
-    <category name="CITRIX_COMPONENTS" displayName="$(string.CITRIX_COMPONENTS)" explainText="$(string.CITRIX_COMPONENTS_HELP)"/>
+    <category name="CITRIX_COMPONENTS" displayName="$(string.CITRIX_COMPONENTS)" explainText="$(string.CITRIX_COMPONENTS_HELP)" />
     <category name="ICAClient" displayName="$(string.ICAClient)" explainText="$(string.Explain_ICAClient)">
       <parentCategory ref="CITRIX_COMPONENTS" />
     </category>
@@ -94,6 +95,9 @@
     <category name="CitrixEnterpriseBrowser" displayName="$(string.CitrixEnterpriseBrowser)" explainText="$(string.Explain_CitrixEnterpriseBrowser)">
       <parentCategory ref="ICAClient" />
     </category>
+    <category name="SecurityPreferences" displayName="$(string.SecurityPreferences)" explainText="$(string.Explain_SecurityPreferences)">
+      <parentCategory ref="ICAClient" />
+    </category>
   </categories>
   <policies>
     <policy name="Policy_Enable_PersistentICA" class="Machine" displayName="$(string.Policy_Enable_PersistentICA)" explainText="$(string.Explain_PersistentICA)" presentation="$(presentation.Policy_Enable_PersistentICA)" key="Software\Policies\Citrix\ICA Client\PersistentICA" valueName="Enabled">
@@ -109,6 +113,16 @@
         <text id="Part_PersistentICA_ConfiguredApp" valueName="ConfiguredApp" />
         <decimal id="Part_PersistentICA_MaxLaunchRetries" valueName="MaxRetries" minValue="1" maxValue="10" storeAsText="true" />
       </elements>
+    </policy>
+    <policy name="Policy_Enable_SignOutOnSessionDisconnect" class="Machine" displayName="$(string.Policy_Enable_SignOutOnSessionDisconnect)" explainText="$(string.Explain_SignOutOnSessionDisconnect)" presentation="$(presentation.Policy_SignOutOnSessionDisconnect)" key="Software\Policies\Citrix\Dazzle" valueName="SignOutFromCWAOnSessionDisconnect">
+      <parentCategory ref="SecurityPreferences" />
+      <supportedOn ref="SUPPORTED_NotSpecified" />
+      <enabledValue>
+        <string>true</string>
+      </enabledValue>
+      <disabledValue>
+        <string>false</string>
+      </disabledValue>
     </policy>
     <policy name="Policy_EnableICAClient" class="Machine" displayName="$(string.Policy_EnableICAClient)" explainText="$(string.Explain_EnableICAClient)" presentation="$(presentation.Policy_EnableICAClient)" key="Software\Policies\Citrix\ICA Client\Engine\Lockdown Profiles\All Regions">
       <parentCategory ref="ICAClient" />
@@ -6680,6 +6694,24 @@
         <multiText id="LocalAppWhitelist_Value" valueName="LocalAppWhitelist" />
       </elements>
     </policy>
+    <policy name="Policy_GACSDiscoveryRegion" class="Machine" displayName="$(string.Policy_GACSDiscoveryRegion)" explainText="$(string.Explain_GACSDiscoveryRegion)" presentation="$(presentation.Policy_GACSDiscoveryRegion)" key="Software\Policies\Citrix\GlobalAppConfig">
+      <parentCategory ref="GlobalAppConfig" />
+      <supportedOn ref="SUPPORTED_Platform_GACSDiscoveryRegion" />
+      <elements>
+        <enum id="refid_GACSDiscoveryRegion" valueName="GACSDiscoveryRegion">
+          <item displayName="$(string.DefaultGACSDiscovery)">
+            <value>
+              <string>Default</string>
+            </value>
+          </item>
+          <item displayName="$(string.USGOV)">
+            <value>
+              <string>USGOV</string>
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
     <policy name="Policy_LocalAppProtection" class="Machine" displayName="$(string.Policy_LocalAppProtection)" explainText="$(string.Explain_LocalAppProtection)" presentation="$(presentation.presentation_LocalAppProtection)" key="SOFTWARE\Policies\Citrix\AppProtection">
       <parentCategory ref="SelfService" />
       <supportedOn ref="SUPPORTED_Platform" />
@@ -6761,14 +6793,14 @@
         <decimal value="0" />
       </disabledValue>
     </policy>
-    <policy name="Policy_ScreenCaptureNotification" class="Machine" displayName="$(string.Policy_ScreenCaptureNotification)" explainText="$(string.Explain_ScreenCaptureNotification)" presentation="$(presentation.Policy_ScreenCaptureNotification)" key="Software\Policies\Citrix\AppProtection" valueName="ScreenCaptureNotification">
+    <policy name="Policy_ScreenCaptureNotification" class="Machine" displayName="$(string.Policy_ScreenCaptureNotification)" explainText="$(string.Explain_ScreenCaptureNotification)" presentation="$(presentation.Policy_ScreenCaptureNotification)" key="Software\Policies\Citrix\AppProtection" valueName="disableScreenCaptureNotification">
       <parentCategory ref="AppProtection" />
       <supportedOn ref="SUPPORTED_Platform" />
       <enabledValue>
-        <string>Enabled</string>
+        <string>false</string>
       </enabledValue>
       <disabledValue>
-        <string>Disabled</string>
+        <string>true</string>
       </disabledValue>
     </policy>
   </policies>
