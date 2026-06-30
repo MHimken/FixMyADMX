@@ -49,19 +49,33 @@ Will attempt to apply all fixes within this script. This is is the minimum amoun
     Last change date: 30.06.2026
     Latest changes: https://github.com/MHimken/FixMyADMX/blob/master/changelog.md
 #>
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName = 'Default')]
 param(
-    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'Default')]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'CustomSupportedOn')]
     [System.IO.FileInfo]$ADMXFileLocation,
-    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'Default')]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'CustomSupportedOn')]
     [System.IO.FileInfo]$ADMLFileLocation,
-    [System.IO.DirectoryInfo]$WorkingDirectory = 'C:\FixMyADMX\',
-    [System.IO.DirectoryInfo]$LogDirectory = "$WorkingDirectory\Logs\",
-    [Switch]$ToConsole,
+    [Parameter(ParameterSetName = 'Default')]
+    [Parameter(ParameterSetName = 'CustomSupportedOn')]
     [Switch]$UseCustomSupportedOn,
+    [Parameter(Mandatory = $true, ParameterSetName = 'CustomSupportedOn')]
     [string]$SupportedOnName,
+    [Parameter(Mandatory = $true, ParameterSetName = 'CustomSupportedOn')]
     [string]$SupportedOnString,
-    [Switch]$IncrementMajorRevision
+    [Parameter(ParameterSetName = 'Default')]
+    [Parameter(ParameterSetName = 'CustomSupportedOn')]
+    [Switch]$IncrementMajorRevision,
+    [Parameter(ParameterSetName = 'Default')]
+    [Parameter(ParameterSetName = 'CustomSupportedOn')]
+    [System.IO.DirectoryInfo]$WorkingDirectory = 'C:\FixMyADMX\',
+    [Parameter(ParameterSetName = 'Default')]
+    [Parameter(ParameterSetName = 'CustomSupportedOn')]
+    [System.IO.DirectoryInfo]$LogDirectory = "$WorkingDirectory\Logs\",
+    [Parameter(ParameterSetName = 'Default')]
+    [Parameter(ParameterSetName = 'CustomSupportedOn')]
+    [Switch]$ToConsole
 )
 #Prepare folders and files
 $Script:TimeStampStart = Get-Date
@@ -73,11 +87,9 @@ $LogFile = Join-Path -Path $LogDirectory -ChildPath ('{0}_{1}.log' -f $LogPrefix
 if (-not(Test-Path $WorkingDirectory)) { New-Item -Path $WorkingDirectory -ItemType Directory -Force | Out-Null } 
 $CurrentLocation = Get-Location
 Set-Location $WorkingDirectory
-if (($SupportedOnName -or $SupportedOnString) -and -not($UseCustomSupportedOn)) {
-    throw 'Using -SupportedOnName or -SupportedOnString requires -UseCustomSupportedOn.'
-}
-if (($SupportedOnName -and -not($SupportedOnString)) -or ($SupportedOnString -and -not($SupportedOnName))) {
-    throw 'You must provide both -SupportedOnName and -SupportedOnString together.'
+# Custom parameter set is explicitly selected when SupportedOnName/SupportedOnString are used.
+if ($PSCmdlet.ParameterSetName -eq 'CustomSupportedOn') {
+    $UseCustomSupportedOn = $true
 }
 $script:FatalRepairError = $false
 $script:RepairSummary = [ordered]@{
