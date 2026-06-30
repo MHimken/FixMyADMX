@@ -1,5 +1,16 @@
 # Changes
 
+## June 2026
+
+- Change: Detection of active `windows:` references no longer blocks other fixes. The script now skips only the windows namespace removal step and continues.
+- Add: New optional `-UseCustomSupportedOn` switch to replace `windows:*` supportedOn references with a local `SUPPORTED_Windows` definition and remove the windows namespace import.
+- Change: Removed the `-UseWindowsSupportedOnName` parameter because `-UseCustomSupportedOn` now defaults to `Windows`.
+- Add: New optional `-SupportedOnName` + `-SupportedOnString` parameters (used with `-UseCustomSupportedOn`) to define a custom supportedOn definition and corresponding ADML string entry.
+- Add: The ADMX `policyDefinitions` `revision` now increments minor version on each run; `-IncrementMajorRevision` increments major and resets minor to `0`.
+- Change: `-UseCustomSupportedOn` now defaults to supportedOn definition name `SUPPORTED_Windows` and string text `Windows` when no custom values are provided.
+- Fix: When custom supportedOn mode is used, the output now always ensures a `<supportedOn>` section in `<policyDefinitions>` with a matching ADML string entry.
+- Fix: Corrected explainText fallback parameter usage and improved explainText attribute/log handling.
+
 ## August 2025
 
 - Fix: MN-EckeD provided a method to fix [#3](https://github.com/MHimken/FixMyADMX/issues/3)
